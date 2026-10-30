@@ -24,18 +24,18 @@ a{color:inherit}
 body.locked{overflow:hidden}
 #gate{--h:100vh;position:fixed;inset:0;z-index:50;overflow:hidden;transition:opacity .9s ease;background:#3a1a10}
 @supports (height:100dvh){#gate{--h:100dvh}}
-#gate::before{content:"";position:absolute;inset:-6%;background:url(photos/palace-gate.jpg) center/cover;filter:blur(16px) brightness(.7)}
+#gate::before{content:"";position:absolute;inset:-6%;background:url(palace-gate.jpg) center/cover;filter:blur(16px) brightness(.7)}
 #gate.fade{opacity:0;pointer-events:none}
 #gate.gone{display:none}
 #scene{position:absolute;inset:0;display:grid;place-items:center;transition:transform 2.2s cubic-bezier(.65,0,.85,.45)}
 #gate.zoom #scene{transform:scale(var(--z,8))}
 .stage{position:relative;height:var(--h);width:calc(var(--h)*.5628);container-type:inline-size;
-  background:url(photos/palace-gate.jpg) center/100% 100%;box-shadow:0 0 40px #000a}
+  background:url(palace-gate.jpg) center/100% 100%;box-shadow:0 0 40px #000a}
 .gateway{position:absolute;left:36.66%;width:26.89%;top:43.66%;bottom:24.16%;padding:0;border:0;cursor:pointer;perspective:900px;overflow:hidden;
   border-radius:50% 50% 0 0/18% 18% 0 0;background:radial-gradient(circle at 50% 55%,#fff6bf 0,#ffc65a 40%,#e0762b 88%);animation:beat 2.4s infinite}
 .gateway:hover{filter:brightness(1.1)}
 .door{position:absolute;top:0;bottom:0;width:50%;transition:transform 1.5s cubic-bezier(.5,0,.2,1);
-  background:url(photos/palace-gate.jpg) no-repeat;background-size:100cqw 177.68cqw;background-position-y:-77.58cqw}
+  background:url(palace-gate.jpg) no-repeat;background-size:100cqw 177.68cqw;background-position-y:-77.58cqw}
 .door.l{left:0;transform-origin:left center;background-position-x:-36.66cqw}
 .door.r{right:0;transform-origin:right center;background-position-x:-50.1cqw}
 .opening .door.l{transform:rotateY(100deg)}.opening .door.r{transform:rotateY(-100deg)}
