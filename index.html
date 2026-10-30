@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chanchal &amp; Saket · #SangChal</title>
+<meta name="description" content="Padharo to our Shaadi. Chanchal weds Saket, 3 December 2026, Garh Panchkot Eco Tourism II.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#5a0f1e; --deep:#33060f; --gold:#d9a441; --gold2:#f3d58a; --ivory:#fff6e5;
+  --disp:'Rozha One',Georgia,serif; --body:'Cormorant Garamond',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);font-size:1.2rem;line-height:1.6;color:var(--ivory);background:var(--deep)}
+h1,h2,h3{font-family:var(--disp);font-weight:400;line-height:1.15}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
+
+/* Opening gate: the one memorable moment */
+#gate{position:fixed;inset:0;z-index:50;display:flex;background:var(--deep)}
+#gate .door{flex:1;background:
+  radial-gradient(circle at 50% 50%,var(--gold) 0 3px,transparent 4px) 0 0/34px 34px,var(--maroon);
+  transition:transform 1.6s cubic-bezier(.7,0,.2,1);border:6px double var(--gold)}
+#gate .l{border-right-width:3px}#gate .r{border-left-width:3px}
+#gate .seal{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:1rem;z-index:2;padding:1rem;transition:opacity .5s}
+#gate .seal p{font-style:italic;color:var(--gold2)}
+#gate .seal h2{font-size:clamp(2rem,8vw,3.6rem);color:var(--gold2)}
+#gate button{justify-self:center;font:inherit;font-size:1.2rem;padding:.7rem 2rem;border:2px solid var(--gold);border-radius:999px;background:var(--deep);color:var(--gold2);cursor:pointer}
+#gate button:hover{background:var(--gold);color:var(--deep)}
+#gate.open .l{transform:translateX(-101%)}#gate.open .r{transform:translateX(101%)}
+#gate.open .seal{opacity:0;pointer-events:none}
+#gate.gone{display:none}
+
+/* Hero */
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:3rem 1rem;
+  background:radial-gradient(circle at 50% 35%,#7a1a2e 0,var(--maroon) 45%,var(--deep) 100%)}
+.arch{width:min(92vw,560px);padding:3.5rem 1.5rem 2.5rem;border:3px solid var(--gold);outline:1px solid var(--gold);outline-offset:8px;
+  border-radius:999px 999px 8px 8px;background:rgba(51,6,15,.55)}
+.hero .welcome{font-style:italic;color:var(--gold2);letter-spacing:.04em}
+.hero h1{font-size:clamp(2.6rem,11vw,4.8rem);color:var(--gold2);margin:.6rem 0}
+.hero h1 span{display:block;font-size:.4em;color:var(--gold);margin:.2rem 0}
+.hero .date{font-size:1.4rem}
+.tag{display:inline-block;margin-top:1rem;color:var(--gold);font-family:var(--disp);font-size:1.4rem}
+
+/* Countdown */
+.count{display:flex;justify-content:center;gap:.7rem;margin:1.6rem 0 .4rem;flex-wrap:wrap}
+.count div{min-width:4.4rem;padding:.5rem .3rem;border:1px solid var(--gold);border-radius:8px}
+.count b{display:block;font-family:var(--disp);font-weight:400;font-size:1.9rem;color:var(--gold2)}
+.count small{font-size:.9rem}
+
+/* Events */
+.ev{padding:5rem 1rem;display:grid;justify-items:center;text-align:center;background:var(--bg);color:var(--ink)}
+.ev .card{width:min(92vw,520px);padding:3.2rem 1.5rem 2.2rem;border:3px solid var(--line);outline:1px solid var(--line);outline-offset:8px;
+  border-radius:999px 999px 14px 14px;background:var(--card)}
+.ev h2{font-size:clamp(2.2rem,8vw,3.4rem);color:var(--head)}
+.ev .mood{font-style:italic;opacity:.85;margin:.2rem 0 1.2rem}
+.ev .when{font-weight:600;font-size:1.35rem}
+.ev .where{margin-bottom:1.2rem}
+.btn{display:inline-block;padding:.55rem 1.5rem;border-radius:999px;background:var(--head);color:var(--bg);text-decoration:none;font-weight:600}
+.btn:hover{filter:brightness(1.15)}
+.intro{padding:4rem 1rem 1rem;text-align:center;background:var(--deep)}
+.intro h2{color:var(--gold2);font-size:clamp(1.8rem,6vw,2.6rem)}
+.intro p{max-width:34rem;margin:.8rem auto 0}
+
+.myraah{--bg:#ffe3e8;--card:#fff4f6;--line:#c2185b;--head:#b0123f;--ink:#4a0d20}
+.myraah{background:radial-gradient(circle,#f48fb1 0 2px,transparent 3px) 0 0/28px 28px,#ffe3e8}
+.sangeet{--bg:#1a0933;--card:rgba(40,12,70,.8);--line:#f3d58a;--head:#f3d58a;--ink:#fbeeff;
+  background:radial-gradient(circle at 20% 15%,#7b2cbf55,transparent 40%),radial-gradient(circle at 80% 80%,#d4af3744,transparent 40%),#1a0933}
+.sangeet h2{text-shadow:0 0 18px #f3d58a99}
+.sangeet .btn{color:#1a0933}
+.carnival{--bg:#e8f6ee;--card:#fffdf7;--line:#9ec9e2;--head:#5b8fb0;--ink:#3b4a55;
+  background:linear-gradient(160deg,#ffe5d9,#e8f6ee 35%,#dfe9ff 65%,#f3e1ff)}
+.carnival .btn{color:#fff}
+.wedding{--bg:#2a0610;--card:rgba(90,15,30,.6);--line:#d9a441;--head:#f3d58a;--ink:#fff6e5;
+  background:radial-gradient(circle,#d9a44155 0 2px,transparent 3px) 0 0/34px 34px,#2a0610}
+.wedding .btn{color:#2a0610;background:linear-gradient(135deg,#f3d58a,#d9a441)}
+
+footer{text-align:center;padding:3rem 1rem;background:var(--deep);color:var(--gold2)}
+footer .tag{margin:0 0 .5rem}
+
+@media (prefers-reduced-motion:reduce){#gate .door,#gate .seal{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="door l"></div><div class="door r"></div>
+  <div class="seal">
+    <p>Padharo mhare shaadi mein</p>
+    <h2>Chanchal &amp; Saket</h2>
+    <button id="openBtn">Open the invitation</button>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="arch">
+    <p class="welcome">Padharo to our Shaadi</p>
+    <h1>Chanchal <span>weds</span> Saket</h1>
+    <p class="date">Thursday, 3 December 2026</p>
+    <p>Garh Panchkot Eco Tourism II</p>
+    <div class="count" id="count" aria-live="off">
+      <div><b id="d">--</b><small>days</small></div>
+      <div><b id="h">--</b><small>hours</small></div>
+      <div><b id="m">--</b><small>minutes</small></div>
+      <div><b id="s">--</b><small>seconds</small></div>
+    </div>
+    <p id="countNote">until the wedding</p>
+    <span class="tag">#SangChal</span>
+  </div>
+</header>
+
+<div class="intro">
+  <h2>Four celebrations, two days, one big family</h2>
+  <p>With joy and blessings, we invite you to celebrate with us. Come as you are, stay for all of it.</p>
+</div>
+
+<section class="ev myraah">
+  <div class="card">
+    <h2>Myraah</h2>
+    <p class="mood">A classic red and pink welcome</p>
+    <p class="when">Wednesday, 2 December<br>3:00 PM to 5:00 PM</p>
+    <p class="where">Small Hall<br>Garh Panchkot Eco Tourism II</p>
+    <a class="btn" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener">Get directions</a>
+  </div>
+</section>
+
+<section class="ev sangeet">
+  <div class="card">
+    <h2>Sangeet</h2>
+    <p class="mood">A night of glitz, glam and dance</p>
+    <p class="when">Wednesday, 2 December<br>6:00 PM to 11:00 PM</p>
+    <p class="where">Open Lawn<br>Garh Panchkot Eco Tourism II</p>
+    <a class="btn" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener">Get directions</a>
+  </div>
+</section>
+
+<section class="ev carnival">
+  <div class="card">
+    <h2>Carnival</h2>
+    <p class="mood">A soft, sunny morning in pastel shades</p>
+    <p class="when">Thursday, 3 December<br>10:00 AM to 1:00 PM</p>
+    <p class="where">Open Lawn 2<br>Garh Panchkot Eco Tourism II</p>
+    <a class="btn" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener">Get directions</a>
+  </div>
+</section>
+
+<section class="ev wedding">
+  <div class="card">
+    <h2>The Wedding</h2>
+    <p class="mood">A royal evening of pheras and promises</p>
+    <p class="when">Thursday, 3 December<br>7:00 PM to 11:00 PM</p>
+    <p class="where">Garh Panchkot Eco Tourism II</p>
+    <a class="btn" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener">Get directions</a>
+  </div>
+</section>
+
+<footer>
+  <span class="tag">#SangChal</span>
+  <p>We can't wait to celebrate with you.<br>Chanchal &amp; Saket</p>
+</footer>
+
+<script>
+(function(){
+  var gate=document.getElementById('gate');
+  document.getElementById('openBtn').addEventListener('click',function(){
+    gate.classList.add('open');
+    setTimeout(function(){gate.classList.add('gone')},1700);
+  });
+  // Wedding starts 3 Dec 2026, 7:00 PM India time
+  var target=new Date('2026-12-03T19:00:00+05:30').getTime();
+  var ids=['d','h','m','s'].map(function(i){return document.getElementById(i)});
+  function pad(n){return n<10?'0'+n:''+n}
+  function tick(){
+    var diff=target-Date.now();
+    if(diff<=0){
+      document.getElementById('count').style.display='none';
+      document.getElementById('countNote').textContent='Today is the day. Welcome to the shaadi!';
+      return;
+    }
+    var s=Math.floor(diff/1000);
+    ids[0].textContent=Math.floor(s/86400);
+    ids[1].textContent=pad(Math.floor(s%86400/3600));
+    ids[2].textContent=pad(Math.floor(s%3600/60));
+    ids[3].textContent=pad(s%60);
+  }
+  tick();setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
