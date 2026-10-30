@@ -20,20 +20,35 @@ h1,h2,h3{font-family:var(--disp);font-weight:400;line-height:1.15}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
 
-/* Opening gate: the one memorable moment */
-#gate{position:fixed;inset:0;z-index:50;display:flex;background:var(--deep)}
-#gate .door{flex:1;background:
-  radial-gradient(circle at 50% 50%,var(--gold) 0 3px,transparent 4px) 0 0/34px 34px,var(--maroon);
-  transition:transform 1.6s cubic-bezier(.7,0,.2,1);border:6px double var(--gold)}
-#gate .l{border-right-width:3px}#gate .r{border-left-width:3px}
-#gate .seal{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:1rem;z-index:2;padding:1rem;transition:opacity .5s}
-#gate .seal p{font-style:italic;color:var(--gold2)}
-#gate .seal h2{font-size:clamp(2rem,8vw,3.6rem);color:var(--gold2)}
-#gate button{justify-self:center;font:inherit;font-size:1.2rem;padding:.7rem 2rem;border:2px solid var(--gold);border-radius:999px;background:var(--deep);color:var(--gold2);cursor:pointer}
-#gate button:hover{background:var(--gold);color:var(--deep)}
-#gate.open .l{transform:translateX(-101%)}#gate.open .r{transform:translateX(101%)}
-#gate.open .seal{opacity:0;pointer-events:none}
+/* Palace gate: the entrance scene (real picture) */
+body.locked{overflow:hidden}
+#gate{--h:100vh;position:fixed;inset:0;z-index:50;overflow:hidden;transition:opacity .9s ease;background:#3a1a10}
+@supports (height:100dvh){#gate{--h:100dvh}}
+#gate::before{content:"";position:absolute;inset:-6%;background:url(photos/palace-gate.jpg) center/cover;filter:blur(16px) brightness(.7)}
+#gate.fade{opacity:0;pointer-events:none}
 #gate.gone{display:none}
+#scene{position:absolute;inset:0;display:grid;place-items:center;transition:transform 2.2s cubic-bezier(.65,0,.85,.45)}
+#gate.zoom #scene{transform:scale(var(--z,8))}
+.stage{position:relative;height:var(--h);width:calc(var(--h)*.5628);container-type:inline-size;
+  background:url(photos/palace-gate.jpg) center/100% 100%;box-shadow:0 0 40px #000a}
+.gateway{position:absolute;left:36.66%;width:26.89%;top:43.66%;bottom:24.16%;padding:0;border:0;cursor:pointer;perspective:900px;overflow:hidden;
+  border-radius:50% 50% 0 0/18% 18% 0 0;background:radial-gradient(circle at 50% 55%,#fff6bf 0,#ffc65a 40%,#e0762b 88%);animation:beat 2.4s infinite}
+.gateway:hover{filter:brightness(1.1)}
+.door{position:absolute;top:0;bottom:0;width:50%;transition:transform 1.5s cubic-bezier(.5,0,.2,1);
+  background:url(photos/palace-gate.jpg) no-repeat;background-size:100cqw 177.68cqw;background-position-y:-77.58cqw}
+.door.l{left:0;transform-origin:left center;background-position-x:-36.66cqw}
+.door.r{right:0;transform-origin:right center;background-position-x:-50.1cqw}
+.opening .door.l{transform:rotateY(100deg)}.opening .door.r{transform:rotateY(-100deg)}
+.opening .gateway{animation:none;cursor:default}
+.plaque{position:absolute;left:50%;top:4svh;transform:translateX(-50%);z-index:2;padding:.3em 1.2em;white-space:nowrap;
+  background:#0f6b68;border:3px solid #f0b84a;border-radius:10px;color:#fff3d0;font-family:var(--disp);font-size:clamp(1.1rem,5.5vw,2rem);box-shadow:0 6px 16px #0007;transition:opacity .5s}
+.hint{position:absolute;left:50%;top:calc(4svh + 4.4rem);transform:translateX(-50%);z-index:2;width:max-content;max-width:90vw;text-align:center;
+  padding:.2em 1em;border-radius:999px;background:#0f6b68d9;color:#fff3d0;font-style:italic;font-size:1.15rem;animation:pulse 2s infinite alternate;transition:opacity .5s}
+.opening .hint,.opening .plaque{opacity:0}
+@keyframes pulse{from{opacity:.6}to{opacity:1}}
+@keyframes beat{0%,100%{box-shadow:0 0 14px 2px #ffc65a55}50%{box-shadow:0 0 34px 12px #ffc65add}}
+@keyframes land{from{opacity:0;transform:scale(1.2)}to{opacity:1;transform:none}}
+body.entered .hero .arch{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 
 /* Hero */
 .hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:3rem 1rem;
@@ -82,18 +97,17 @@ a{color:inherit}
 footer{text-align:center;padding:3rem 1rem;background:var(--deep);color:var(--gold2)}
 footer .tag{margin:0 0 .5rem}
 
-@media (prefers-reduced-motion:reduce){#gate .door,#gate .seal{transition:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){#scene,.door{transition:none}.gateway,.hint{animation:none}body.entered .hero .arch{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
-<body>
+<body class="locked">
 
 <div id="gate">
-  <div class="door l"></div><div class="door r"></div>
-  <div class="seal">
-    <p>Padharo mhare shaadi mein</p>
-    <h2>Chanchal &amp; Saket</h2>
-    <button id="openBtn">Open the invitation</button>
-  </div>
+  <div class="plaque">Chanchal &amp; Saket</div>
+  <p class="hint">Padharo mhare des. Tap the gate to enter.</p>
+  <div id="scene"><div class="stage">
+    <button id="door" class="gateway" aria-label="Open the palace gate"><span class="door l"></span><span class="door r"></span></button>
+  </div></div>
 </div>
 
 <header class="hero">
@@ -165,10 +179,18 @@ footer .tag{margin:0 0 .5rem}
 
 <script>
 (function(){
-  var gate=document.getElementById('gate');
-  document.getElementById('openBtn').addEventListener('click',function(){
-    gate.classList.add('open');
-    setTimeout(function(){gate.classList.add('gone')},1700);
+  var gate=document.getElementById('gate'),door=document.getElementById('door'),scene=document.getElementById('scene');
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  door.addEventListener('click',function(){
+    if(gate.classList.contains('opening'))return;
+    var r=door.getBoundingClientRect();
+    scene.style.transformOrigin=(r.left+r.width/2)+'px '+(r.top+r.height*.62)+'px';
+    gate.style.setProperty('--z',Math.max(6,innerWidth/r.width*2.6));
+    gate.classList.add('opening');
+    var t=still?[0,0,500]:[900,2300,3400];
+    setTimeout(function(){gate.classList.add('zoom')},t[0]);
+    setTimeout(function(){gate.classList.add('fade');document.body.classList.add('entered');window.scrollTo(0,0)},t[1]);
+    setTimeout(function(){gate.classList.add('gone');document.body.classList.remove('locked')},t[2]);
   });
   // Wedding starts 3 Dec 2026, 7:00 PM India time
   var target=new Date('2026-12-03T19:00:00+05:30').getTime();
