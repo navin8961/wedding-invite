@@ -22,18 +22,19 @@ a{color:inherit}
 
 /* Palace gate: the entrance scene (real picture) */
 body.locked{overflow:hidden}
-#gate{--h:100vh;position:fixed;inset:0;z-index:50;overflow:hidden;transition:opacity .9s ease;background:#3a1a10}
+#gate{--h:100vh;position:fixed;inset:0;z-index:50;overflow:hidden;transition:opacity .9s ease}
 @supports (height:100dvh){#gate{--h:100dvh}}
-#gate::before{content:"";position:absolute;inset:-6%;background:url(palace-gate.jpg) center/cover;filter:blur(16px) brightness(.7)}
+#gate::before,#gate::after{content:"";position:absolute;top:0;bottom:0;z-index:0;width:max(0px,calc(50% - var(--h)*.2814 + 54px));background:url(palace-gate.jpg) center/cover;filter:blur(14px) brightness(.7)}
+#gate::before{left:-30px}#gate::after{right:-30px}
 #gate.fade{opacity:0;pointer-events:none}
 #gate.gone{display:none}
-#scene{position:absolute;inset:0;display:grid;place-items:center;transition:transform 2.2s cubic-bezier(.65,0,.85,.45)}
+#scene{position:absolute;inset:0;z-index:1;display:grid;place-items:center;transition:transform 2.2s cubic-bezier(.65,0,.85,.45)}
 #gate.zoom #scene{transform:scale(var(--z,8))}
-.stage{position:relative;height:var(--h);width:calc(var(--h)*.5628);container-type:inline-size;
-  background:url(palace-gate.jpg) center/100% 100%;box-shadow:0 0 40px #000a}
+.stage{position:relative;height:var(--h);width:calc(var(--h)*.5628);container-type:inline-size;box-shadow:0 0 40px #000a}
+.pic{position:absolute;inset:0;background:url(palace-gate.jpg) center/100% 100%;clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,36.86% 75.68%,36.86% 52.74%,37.07% 50.64%,38.95% 47.68%,40.57% 46.43%,42.61% 45.60%,44.81% 45.00%,47.32% 44.52%,48.78% 44.17%,50.10% 43.82%,51.43% 44.17%,52.89% 44.52%,55.40% 45.00%,57.60% 45.60%,59.64% 46.43%,61.26% 47.68%,63.14% 50.64%,63.35% 52.74%,63.35% 75.68%,63.35% 75.68%,36.86% 75.68%,0 100%)}
 .glow{position:absolute;left:36.66%;width:26.89%;top:43.66%;bottom:24.16%;animation:beat 2.4s infinite}
 .gateway{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;perspective:900px;overflow:hidden;
-  clip-path:polygon(0% 100%,0% 28%,0.8% 21.4%,7.9% 12.1%,14% 8.2%,21.7% 5.6%,30% 3.7%,39.5% 2.2%,45% 1.1%,50% 0%,55% 1.1%,60.5% 2.2%,70% 3.7%,78.3% 5.6%,86% 8.2%,92.1% 12.1%,99.2% 21.4%,100% 28%,100% 100%,100% 100%);background:radial-gradient(circle at 50% 55%,#fff6bf 0,#ffc65a 40%,#e0762b 88%)}
+  clip-path:polygon(0% 100%,0% 28%,0.8% 21.4%,7.9% 12.1%,14% 8.2%,21.7% 5.6%,30% 3.7%,39.5% 2.2%,45% 1.1%,50% 0%,55% 1.1%,60.5% 2.2%,70% 3.7%,78.3% 5.6%,86% 8.2%,92.1% 12.1%,99.2% 21.4%,100% 28%,100% 100%,100% 100%)}
 .gateway:hover{filter:brightness(1.1)}
 .door{position:absolute;top:0;bottom:0;width:50%;transition:transform 1.5s cubic-bezier(.5,0,.2,1);
   background:url(palace-gate.jpg) no-repeat;background-size:100cqw 177.68cqw;background-position-y:-77.58cqw}
@@ -47,13 +48,7 @@ body.locked{overflow:hidden}
   text-shadow:0 1px 0 #fff,0 0 10px #fff9,0 2px 3px #0d5f5a44}
 .caption span{font-style:italic;font-weight:600;font-size:4.7cqw;color:#8a2f2a;text-shadow:0 0 8px #fff;animation:pulse 2s infinite alternate}
 .opening .caption{opacity:0}
-.peacock{position:absolute;width:11.5%;aspect-ratio:1;top:38.8%;pointer-events:none;filter:drop-shadow(0 3px 3px #0006)}
-.peacock svg{width:100%;height:100%;overflow:visible}
-.pl{left:37.1%;transform:rotate(-12deg);transform-origin:52% 90%}
-.pr{left:51.9%;transform:scaleX(-1) rotate(-12deg);transform-origin:48% 90%}
-.tail{transform-origin:44px 76px;animation:sway 3.6s ease-in-out infinite alternate}
-@keyframes sway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
-#petals{position:fixed;inset:0;z-index:60;pointer-events:none}
+.petals{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 @keyframes pulse{from{opacity:.6}to{opacity:1}}
 @keyframes beat{0%,100%{filter:drop-shadow(0 0 5px #ffc65a99)}50%{filter:drop-shadow(0 0 16px #ffd36bff)}}
 @keyframes land{from{opacity:0;transform:scale(1.2)}to{opacity:1;transform:none}}
@@ -106,18 +101,16 @@ body.entered .hero .arch{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 footer{text-align:center;padding:3rem 1rem;background:var(--deep);color:var(--gold2)}
 footer .tag{margin:0 0 .5rem}
 
-@media (prefers-reduced-motion:reduce){#scene,.door{transition:none}.glow,.caption span,.tail{animation:none}#petals{display:none}body.entered .hero .arch{animation:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){#scene,.door{transition:none}.glow,.caption span{animation:none}.petals{display:none}body.entered .hero .arch{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body class="locked">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="pb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1596ab"/><stop offset="1" stop-color="#0a4a72"/></linearGradient><symbol id="pea" viewBox="0 0 120 120"><g class="tail"><path d="M44 76Q24 88 8 106" fill="none" stroke="#1a7f64" stroke-width="6" stroke-linecap="round"/><path d="M44 76Q24 88 8 106" fill="none" stroke="#7fe0b0" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="106" r="6.5" fill="#d9a441"/><circle cx="8" cy="106" r="4.4" fill="#0e7c86"/><circle cx="8" cy="106" r="2" fill="#1b2a6b"/><path d="M44 76Q20 80 5 90" fill="none" stroke="#1a7f64" stroke-width="6" stroke-linecap="round"/><path d="M44 76Q20 80 5 90" fill="none" stroke="#7fe0b0" stroke-width="1.6" stroke-linecap="round"/><circle cx="5" cy="90" r="6.5" fill="#d9a441"/><circle cx="5" cy="90" r="4.4" fill="#0e7c86"/><circle cx="5" cy="90" r="2" fill="#1b2a6b"/><path d="M44 76Q24 70 8 70" fill="none" stroke="#1a7f64" stroke-width="6" stroke-linecap="round"/><path d="M44 76Q24 70 8 70" fill="none" stroke="#7fe0b0" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="70" r="6.5" fill="#d9a441"/><circle cx="8" cy="70" r="4.4" fill="#0e7c86"/><circle cx="8" cy="70" r="2" fill="#1b2a6b"/><path d="M44 76Q34 96 24 114" fill="none" stroke="#1a7f64" stroke-width="6" stroke-linecap="round"/><path d="M44 76Q34 96 24 114" fill="none" stroke="#7fe0b0" stroke-width="1.6" stroke-linecap="round"/><circle cx="24" cy="114" r="6.5" fill="#d9a441"/><circle cx="24" cy="114" r="4.4" fill="#0e7c86"/><circle cx="24" cy="114" r="2" fill="#1b2a6b"/><path d="M44 76Q30 62 18 54" fill="none" stroke="#1a7f64" stroke-width="6" stroke-linecap="round"/><path d="M44 76Q30 62 18 54" fill="none" stroke="#7fe0b0" stroke-width="1.6" stroke-linecap="round"/><circle cx="18" cy="54" r="6.5" fill="#d9a441"/><circle cx="18" cy="54" r="4.4" fill="#0e7c86"/><circle cx="18" cy="54" r="2" fill="#1b2a6b"/></g><path d="M66 86L64 109M73 86L75 109" stroke="#c58a2a" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="62" cy="74" rx="25" ry="15" transform="rotate(-15 62 74)" fill="url(#pb)"/><path d="M72 70C86 66 88 54 88 42L97 42C98 60 94 76 78 84Z" fill="#0d6aa8"/><path d="M50 70Q66 62 82 72Q66 86 50 78Z" fill="#d9a441" opacity=".9"/><circle cx="93" cy="37" r="7" fill="#0b5a99"/><path d="M99 36L110 40L99 41Z" fill="#d9a441"/><ellipse cx="94" cy="39.5" rx="3.2" ry="1.6" fill="#fff" opacity=".85"/><circle cx="95" cy="35" r="1.5" fill="#111"/><path d="M92 31L88 18M93 30L93 15M95 31L99 18" stroke="#0b5a99" stroke-width="1.2"/><circle cx="88" cy="17" r="2.3" fill="#1f8a5b"/><circle cx="93" cy="14" r="2.3" fill="#1f8a5b"/><circle cx="99" cy="17" r="2.3" fill="#1f8a5b"/></symbol></defs></svg>
-<canvas id="petals"></canvas>
 
 <div id="gate">
   <div id="scene"><div class="stage">
-    <div class="peacock pl"><svg viewBox="0 0 120 120"><use href="#pea"/></svg></div><div class="peacock pr"><svg viewBox="0 0 120 120"><use href="#pea"/></svg></div>
+    <div class="pic"></div>
     <div class="caption"><b>Padharo Mhare Des</b><span>Tap the gate to enter</span></div>
-    <div class="glow"><button id="door" class="gateway" aria-label="Open the palace gate"><span class="door l"></span><span class="door r"></span></button></div>
+    <div class="glow"><button id="door" class="gateway" aria-label="Open the palace gate"><canvas id="petals" class="petals"></canvas><span class="door l"></span><span class="door r"></span></button></div>
   </div></div>
 </div>
 
@@ -192,39 +185,39 @@ footer .tag{margin:0 0 .5rem}
 (function(){
   var gate=document.getElementById('gate'),door=document.getElementById('door'),scene=document.getElementById('scene');
   var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Falling rose petals
-  var cv=document.getElementById('petals'),cx=cv.getContext('2d'),D=Math.min(window.devicePixelRatio||1,2),W=0,H=0,P=[],on=!still,last=0;
-  function size(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D}
-  function mk(top,fast){var s=7+Math.random()*9;return{x:Math.random()*W,y:top?-20-Math.random()*H*.35:Math.random()*H,s:s,vy:(30+Math.random()*50+s*2)*(fast?1.8:1),
-    ph:Math.random()*6.28,sw:15+Math.random()*30,fq:.6+Math.random()*1.2,r:Math.random()*6.28,vr:(Math.random()-.5)*2.4,t:Math.random()*6.28,dark:Math.random()<.5,once:!!fast}}
+  // Rose petals falling inside the doorway
+  var cv=document.getElementById('petals'),cx=cv.getContext('2d'),R=3,P=[],pw=0,ph=0,last=0,acc=0,until=0;
+  function petal(){var s=(3.5+Math.random()*4)*R;return{x:Math.random()*pw,y:-s,s:s,vy:(90+Math.random()*70)*R,ph:Math.random()*6.28,sw:(8+Math.random()*14)*R,
+    fq:1+Math.random()*1.4,r:Math.random()*6.28,vr:(Math.random()-.5)*3,t:Math.random()*6.28,dark:Math.random()<.5}}
   function draw(p){
     cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.scale(1,Math.abs(Math.cos(p.t))*.8+.2);
     var g=cx.createLinearGradient(0,-p.s,0,p.s);g.addColorStop(0,'#ff93ae');g.addColorStop(1,p.dark?'#c42d4f':'#e0506f');
-    cx.fillStyle=g;cx.globalAlpha=.92;cx.beginPath();cx.moveTo(0,-p.s);
+    cx.fillStyle=g;cx.beginPath();cx.moveTo(0,-p.s);
     cx.bezierCurveTo(p.s*.95,-p.s*.5,p.s*.8,p.s*.8,0,p.s);cx.bezierCurveTo(-p.s*.8,p.s*.8,-p.s*.95,-p.s*.5,0,-p.s);cx.fill();cx.restore();
   }
   function frame(t){
-    if(!on)return;
-    var dt=Math.min(.05,(t-last)/1000||0);last=t;
-    cx.setTransform(D,0,0,D,0,0);cx.clearRect(0,0,W,H);
-    for(var i=P.length-1;i>=0;i--){var p=P[i];
-      p.y+=p.vy*dt;p.ph+=p.fq*dt;p.x+=Math.sin(p.ph)*p.sw*dt;p.r+=p.vr*dt;p.t+=dt*1.6;
-      if(p.y>H+24){if(p.once){P.splice(i,1);continue}P[i]=mk(true)}else draw(p)}
-    requestAnimationFrame(frame);
+    var dt=Math.min(.05,(t-last)/1000||0);last=t;acc+=dt;
+    if(t<until){while(acc>.07){acc-=.07;P.push(petal())}}else acc=0;
+    cx.clearRect(0,0,pw,ph);
+    for(var i=P.length-1;i>=0;i--){var p=P[i];p.y+=p.vy*dt;p.ph+=p.fq*dt;p.x+=Math.sin(p.ph)*p.sw*dt;p.r+=p.vr*dt;p.t+=dt*2;
+      if(p.y>ph+p.s)P.splice(i,1);else draw(p)}
+    if(t<until||P.length)requestAnimationFrame(frame);
   }
-  if(on){size();addEventListener('resize',size);for(var i=0,n=Math.round(Math.min(46,Math.max(22,innerWidth/22)));i<n;i++)P.push(mk(false));requestAnimationFrame(frame)}
-  function burst(){if(!on)return;for(var i=0;i<28;i++)P.push(mk(true,true))}
-  function stopPetals(){if(!on)return;cv.style.transition='opacity 4s';cv.style.opacity=0;setTimeout(function(){on=false},4300)}
+  function startPetals(ms){
+    if(still)return;var r=door.getBoundingClientRect();
+    pw=cv.width=Math.round(r.width*R);ph=cv.height=Math.round(r.height*R);
+    last=performance.now();until=last+ms;requestAnimationFrame(frame);
+  }
   door.addEventListener('click',function(){
     if(gate.classList.contains('opening'))return;
     var r=door.getBoundingClientRect();
     scene.style.transformOrigin=(r.left+r.width/2)+'px '+(r.top+r.height*.62)+'px';
     gate.style.setProperty('--z',Math.max(6,innerWidth/r.width*2.6));
-    gate.classList.add('opening');burst();
+    gate.classList.add('opening');document.body.classList.add('entered');
+    setTimeout(function(){startPetals(2600)},300);
     var t=still?[0,0,500]:[900,2300,3400];
     setTimeout(function(){gate.classList.add('zoom')},t[0]);
-    setTimeout(function(){gate.classList.add('fade');document.body.classList.add('entered');stopPetals();window.scrollTo(0,0)},t[1]);
+    setTimeout(function(){gate.classList.add('fade');window.scrollTo(0,0)},t[1]);
     setTimeout(function(){gate.classList.add('gone');document.body.classList.remove('locked')},t[2]);
   });
   // Wedding starts 3 Dec 2026, 7:00 PM India time
