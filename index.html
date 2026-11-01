@@ -187,6 +187,42 @@ section{position:relative}
 .carnival{--ln:#9ec9e2;--dt:#8a6fb0;--ttl:#6b4fa0;--tm:#2f7d6a;--txt:#3b4a55;--loc:#2f6d8a;--bt:#4f86a8;--btc:#fff;--bb:#9ec9e2}
 .wedding{--ln:#d9a441;--dt:#e0c07a;--ttl:#f3d58a;--tm:#ffdca0;--txt:#fff0dc;--loc:#ffdca0;--bt:linear-gradient(135deg,#f3d58a,#d9a441);--btc:#2a0610;--bb:#d9a441}
 
+/* One arch shape, used everywhere */
+.ac{position:relative;container-type:inline-size;aspect-ratio:var(--a,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:34% 8% 8%;border:7px double var(--gold);background:#fffaf0;box-shadow:0 12px 28px #9a6a1426;overflow:hidden;
+  border-radius:50% 50% 18px 18px/calc(var(--a,.75)*50%) calc(var(--a,.75)*50%) 18px 18px}
+.ac .ros{position:absolute;top:10%;left:50%;width:13cqw;height:13cqw;transform:translateX(-50%)}
+.nm{--a:.75;width:min(82vw,360px)}
+.nm .names{font-size:12.4cqw}
+.nm .hash{font-size:5.6cqw;margin-top:.4rem}
+.fm{--a:.6;width:100%;padding:38% 6% 8%}
+.fm small{display:block;letter-spacing:.18em;font-size:max(10px,3.5cqw);color:var(--gdk);font-weight:600;text-transform:uppercase}
+.fm h3{color:var(--teal);font-size:max(15px,7.4cqw);margin:.25rem 0 .35rem;line-height:1.1}
+.fm p{font-size:max(13px,5.6cqw);line-height:1.3;color:var(--ink)}
+.fm em{display:block;color:var(--gdk)}
+.sc{--a:.8;width:min(78vw,300px);margin:1.6rem auto .8rem;padding:30% 8% 8%;box-shadow:0 10px 30px #9a6a1433}
+.sc small{display:block;letter-spacing:.2em;text-transform:uppercase;font-size:max(10px,3.2cqw);color:var(--gdk);font-weight:600}
+.sc b{display:block;font-family:var(--disp);font-weight:400;font-size:13cqw;line-height:1.1;color:var(--teal)}
+.sc span{font-size:6cqw;color:var(--gdk)}
+.sc canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:pointer;transition:opacity 1s}
+.sc.done canvas{opacity:0;pointer-events:none}
+.cb{--a:.74;padding:34% 3% 8%;border-width:4px;box-shadow:0 6px 14px #9a6a1422}
+.cb b{font-size:30cqw;margin:0 0 .2rem}
+.cb span{font-size:max(9px,10cqw);letter-spacing:.08em}
+.dy{--a:1.05;width:min(88vw,380px);margin:0 auto;padding:28% 8% 8%;justify-content:flex-start;align-items:stretch;text-align:left}
+.dy h3{text-align:center;margin-bottom:.8rem}
+
+/* Music button */
+.music{position:fixed;right:14px;bottom:14px;z-index:45;width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);background:var(--teal);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:3px;padding:0;box-shadow:0 6px 16px #0004}
+.music[hidden]{display:none}
+.music i{display:block;width:4px;height:6px;border-radius:2px;background:var(--gold2);animation:eq 1s ease-in-out infinite alternate;animation-play-state:paused}
+.music i:nth-child(2){animation-delay:.25s}.music i:nth-child(3){animation-delay:.5s}
+.music.on i{animation-play-state:running}
+.music:not(.on)::after{content:"";position:absolute;width:30px;height:2px;background:#fff;transform:rotate(-45deg);border-radius:2px;box-shadow:0 0 0 1px var(--teal)}
+@keyframes eq{from{height:6px}to{height:20px}}
+@media (prefers-reduced-motion:reduce){.music i{animation:none;height:12px}}
+
 /* Palace gate: the entrance scene (real picture) */
 body.locked{overflow:hidden}
 #gate{--h:100vh;position:fixed;inset:0;z-index:50;overflow:hidden;transition:opacity .9s ease}
@@ -223,17 +259,7 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 </style>
 </head>
 <body class="locked">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dc95"/><stop offset=".5" stop-color="#d9a441"/><stop offset="1" stop-color="#b9852a"/></linearGradient>
-<path id="curl" d="M0 0C9-2 20-4 24-13C27-20 19-26 13-22C8-19 10-12 15-13" fill="none" stroke="#c9922c" stroke-width="2.6" stroke-linecap="round"/>
-<g id="ros" fill="#d9a441"><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(45)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(90)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(135)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(180)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(225)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(270)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(315)"/><circle r="4.5" fill="#0f6b68"/></g>
-<path id="o560" d="M34.0 550L34.0 329.1A26.8 26.8 0 0 1 39.1 275.8A26.8 26.8 0 0 1 54.4 224.4A26.8 26.8 0 0 1 79.2 176.9A26.8 26.8 0 0 1 112.5 135.0A26.8 26.8 0 0 1 153.3 100.3A26.8 26.8 0 0 1 200.0 74.0A26.8 26.8 0 0 1 246.7 100.3A26.8 26.8 0 0 1 287.5 135.0A26.8 26.8 0 0 1 320.8 176.9A26.8 26.8 0 0 1 345.6 224.4A26.8 26.8 0 0 1 360.9 275.8A26.8 26.8 0 0 1 366.0 329.1L366.0 550Z"/><path id="b560" d="M46.0 550L46.0 329.1A25.2 25.2 0 0 1 50.8 278.9A25.2 25.2 0 0 1 64.8 230.6A25.2 25.2 0 0 1 87.8 185.7A25.2 25.2 0 0 1 118.7 146.0A25.2 25.2 0 0 1 156.6 112.7A25.2 25.2 0 0 1 200.0 87.2A25.2 25.2 0 0 1 243.4 112.7A25.2 25.2 0 0 1 281.3 146.0A25.2 25.2 0 0 1 312.2 185.7A25.2 25.2 0 0 1 335.2 230.6A25.2 25.2 0 0 1 349.2 278.9A25.2 25.2 0 0 1 354.0 329.1L354.0 550Z"/><path id="i560" d="M60.0 550L60.0 329.1A23.3 23.3 0 0 1 64.3 282.6A23.3 23.3 0 0 1 77.1 237.8A23.3 23.3 0 0 1 97.8 196.0A23.3 23.3 0 0 1 125.9 158.8A23.3 23.3 0 0 1 160.4 127.3A23.3 23.3 0 0 1 200.0 102.7A23.3 23.3 0 0 1 239.6 127.3A23.3 23.3 0 0 1 274.1 158.8A23.3 23.3 0 0 1 302.2 196.0A23.3 23.3 0 0 1 322.9 237.8A23.3 23.3 0 0 1 335.7 282.6A23.3 23.3 0 0 1 340.0 329.1L340.0 550Z"/><path id="m560" d="M53.0 550L53.0 329.1A24.3 24.3 0 0 1 57.5 280.8A24.3 24.3 0 0 1 70.9 234.2A24.3 24.3 0 0 1 92.8 190.9A24.3 24.3 0 0 1 122.3 152.4A24.3 24.3 0 0 1 158.5 120.0A24.3 24.3 0 0 1 200.0 94.9A24.3 24.3 0 0 1 241.5 120.0A24.3 24.3 0 0 1 277.7 152.4A24.3 24.3 0 0 1 307.2 190.9A24.3 24.3 0 0 1 329.1 234.2A24.3 24.3 0 0 1 342.5 280.8A24.3 24.3 0 0 1 347.0 329.1L347.0 550Z"/><clipPath id="cp560"><path d="M60.0 550L60.0 329.1A23.3 23.3 0 0 1 64.3 282.6A23.3 23.3 0 0 1 77.1 237.8A23.3 23.3 0 0 1 97.8 196.0A23.3 23.3 0 0 1 125.9 158.8A23.3 23.3 0 0 1 160.4 127.3A23.3 23.3 0 0 1 200.0 102.7A23.3 23.3 0 0 1 239.6 127.3A23.3 23.3 0 0 1 274.1 158.8A23.3 23.3 0 0 1 302.2 196.0A23.3 23.3 0 0 1 322.9 237.8A23.3 23.3 0 0 1 335.7 282.6A23.3 23.3 0 0 1 340.0 329.1L340.0 550Z"/></clipPath>
-<g id="fr560"><use href="#o560" fill="url(#gg)" stroke="#9a6a14" stroke-width="1.4"/><use href="#b560" style="fill:var(--b)"/><use href="#m560" fill="none" stroke="#f3d58a" stroke-width="3.2" stroke-dasharray="0.1 9" stroke-linecap="round"/><use href="#i560" style="fill:var(--i)" stroke="#c9922c" stroke-width="2"/><path d="M200 78C184 60 184 36 200 14C216 36 216 60 200 78Z" fill="url(#gg)" stroke="#9a6a14" stroke-width="1.2"/><circle cx="200" cy="9" r="4.5" fill="#d9a441"/><rect x="189" y="72" width="22" height="7" rx="3" fill="#b9852a"/><use href="#curl" transform="translate(193 62)"/><use href="#curl" transform="translate(207 62) scale(-1 1)"/><use href="#curl" transform="translate(30 321) scale(-1 1)"/><use href="#curl" transform="translate(370 321)"/><rect x="24" y="544" width="352" height="8" rx="3" fill="url(#gg)"/></g>
-<path id="o620" d="M34.0 610L34.0 329.1A26.8 26.8 0 0 1 39.1 275.8A26.8 26.8 0 0 1 54.4 224.4A26.8 26.8 0 0 1 79.2 176.9A26.8 26.8 0 0 1 112.5 135.0A26.8 26.8 0 0 1 153.3 100.3A26.8 26.8 0 0 1 200.0 74.0A26.8 26.8 0 0 1 246.7 100.3A26.8 26.8 0 0 1 287.5 135.0A26.8 26.8 0 0 1 320.8 176.9A26.8 26.8 0 0 1 345.6 224.4A26.8 26.8 0 0 1 360.9 275.8A26.8 26.8 0 0 1 366.0 329.1L366.0 610Z"/><path id="b620" d="M46.0 610L46.0 329.1A25.2 25.2 0 0 1 50.8 278.9A25.2 25.2 0 0 1 64.8 230.6A25.2 25.2 0 0 1 87.8 185.7A25.2 25.2 0 0 1 118.7 146.0A25.2 25.2 0 0 1 156.6 112.7A25.2 25.2 0 0 1 200.0 87.2A25.2 25.2 0 0 1 243.4 112.7A25.2 25.2 0 0 1 281.3 146.0A25.2 25.2 0 0 1 312.2 185.7A25.2 25.2 0 0 1 335.2 230.6A25.2 25.2 0 0 1 349.2 278.9A25.2 25.2 0 0 1 354.0 329.1L354.0 610Z"/><path id="i620" d="M60.0 610L60.0 329.1A23.3 23.3 0 0 1 64.3 282.6A23.3 23.3 0 0 1 77.1 237.8A23.3 23.3 0 0 1 97.8 196.0A23.3 23.3 0 0 1 125.9 158.8A23.3 23.3 0 0 1 160.4 127.3A23.3 23.3 0 0 1 200.0 102.7A23.3 23.3 0 0 1 239.6 127.3A23.3 23.3 0 0 1 274.1 158.8A23.3 23.3 0 0 1 302.2 196.0A23.3 23.3 0 0 1 322.9 237.8A23.3 23.3 0 0 1 335.7 282.6A23.3 23.3 0 0 1 340.0 329.1L340.0 610Z"/><path id="m620" d="M53.0 610L53.0 329.1A24.3 24.3 0 0 1 57.5 280.8A24.3 24.3 0 0 1 70.9 234.2A24.3 24.3 0 0 1 92.8 190.9A24.3 24.3 0 0 1 122.3 152.4A24.3 24.3 0 0 1 158.5 120.0A24.3 24.3 0 0 1 200.0 94.9A24.3 24.3 0 0 1 241.5 120.0A24.3 24.3 0 0 1 277.7 152.4A24.3 24.3 0 0 1 307.2 190.9A24.3 24.3 0 0 1 329.1 234.2A24.3 24.3 0 0 1 342.5 280.8A24.3 24.3 0 0 1 347.0 329.1L347.0 610Z"/><clipPath id="cp620"><path d="M60.0 610L60.0 329.1A23.3 23.3 0 0 1 64.3 282.6A23.3 23.3 0 0 1 77.1 237.8A23.3 23.3 0 0 1 97.8 196.0A23.3 23.3 0 0 1 125.9 158.8A23.3 23.3 0 0 1 160.4 127.3A23.3 23.3 0 0 1 200.0 102.7A23.3 23.3 0 0 1 239.6 127.3A23.3 23.3 0 0 1 274.1 158.8A23.3 23.3 0 0 1 302.2 196.0A23.3 23.3 0 0 1 322.9 237.8A23.3 23.3 0 0 1 335.7 282.6A23.3 23.3 0 0 1 340.0 329.1L340.0 610Z"/></clipPath>
-<g id="fr620"><use href="#o620" fill="url(#gg)" stroke="#9a6a14" stroke-width="1.4"/><use href="#b620" style="fill:var(--b)"/><use href="#m620" fill="none" stroke="#f3d58a" stroke-width="3.2" stroke-dasharray="0.1 9" stroke-linecap="round"/><use href="#i620" style="fill:var(--i)" stroke="#c9922c" stroke-width="2"/><path d="M200 78C184 60 184 36 200 14C216 36 216 60 200 78Z" fill="url(#gg)" stroke="#9a6a14" stroke-width="1.2"/><circle cx="200" cy="9" r="4.5" fill="#d9a441"/><rect x="189" y="72" width="22" height="7" rx="3" fill="#b9852a"/><use href="#curl" transform="translate(193 62)"/><use href="#curl" transform="translate(207 62) scale(-1 1)"/><use href="#curl" transform="translate(30 321) scale(-1 1)"/><use href="#curl" transform="translate(370 321)"/><rect x="24" y="604" width="352" height="8" rx="3" fill="url(#gg)"/></g>
-<path id="o660" d="M34.0 650L34.0 329.1A26.8 26.8 0 0 1 39.1 275.8A26.8 26.8 0 0 1 54.4 224.4A26.8 26.8 0 0 1 79.2 176.9A26.8 26.8 0 0 1 112.5 135.0A26.8 26.8 0 0 1 153.3 100.3A26.8 26.8 0 0 1 200.0 74.0A26.8 26.8 0 0 1 246.7 100.3A26.8 26.8 0 0 1 287.5 135.0A26.8 26.8 0 0 1 320.8 176.9A26.8 26.8 0 0 1 345.6 224.4A26.8 26.8 0 0 1 360.9 275.8A26.8 26.8 0 0 1 366.0 329.1L366.0 650Z"/><path id="b660" d="M46.0 650L46.0 329.1A25.2 25.2 0 0 1 50.8 278.9A25.2 25.2 0 0 1 64.8 230.6A25.2 25.2 0 0 1 87.8 185.7A25.2 25.2 0 0 1 118.7 146.0A25.2 25.2 0 0 1 156.6 112.7A25.2 25.2 0 0 1 200.0 87.2A25.2 25.2 0 0 1 243.4 112.7A25.2 25.2 0 0 1 281.3 146.0A25.2 25.2 0 0 1 312.2 185.7A25.2 25.2 0 0 1 335.2 230.6A25.2 25.2 0 0 1 349.2 278.9A25.2 25.2 0 0 1 354.0 329.1L354.0 650Z"/><path id="i660" d="M60.0 650L60.0 329.1A23.3 23.3 0 0 1 64.3 282.6A23.3 23.3 0 0 1 77.1 237.8A23.3 23.3 0 0 1 97.8 196.0A23.3 23.3 0 0 1 125.9 158.8A23.3 23.3 0 0 1 160.4 127.3A23.3 23.3 0 0 1 200.0 102.7A23.3 23.3 0 0 1 239.6 127.3A23.3 23.3 0 0 1 274.1 158.8A23.3 23.3 0 0 1 302.2 196.0A23.3 23.3 0 0 1 322.9 237.8A23.3 23.3 0 0 1 335.7 282.6A23.3 23.3 0 0 1 340.0 329.1L340.0 650Z"/><path id="m660" d="M53.0 650L53.0 329.1A24.3 24.3 0 0 1 57.5 280.8A24.3 24.3 0 0 1 70.9 234.2A24.3 24.3 0 0 1 92.8 190.9A24.3 24.3 0 0 1 122.3 152.4A24.3 24.3 0 0 1 158.5 120.0A24.3 24.3 0 0 1 200.0 94.9A24.3 24.3 0 0 1 241.5 120.0A24.3 24.3 0 0 1 277.7 152.4A24.3 24.3 0 0 1 307.2 190.9A24.3 24.3 0 0 1 329.1 234.2A24.3 24.3 0 0 1 342.5 280.8A24.3 24.3 0 0 1 347.0 329.1L347.0 650Z"/><clipPath id="cp660"><path d="M60.0 650L60.0 329.1A23.3 23.3 0 0 1 64.3 282.6A23.3 23.3 0 0 1 77.1 237.8A23.3 23.3 0 0 1 97.8 196.0A23.3 23.3 0 0 1 125.9 158.8A23.3 23.3 0 0 1 160.4 127.3A23.3 23.3 0 0 1 200.0 102.7A23.3 23.3 0 0 1 239.6 127.3A23.3 23.3 0 0 1 274.1 158.8A23.3 23.3 0 0 1 302.2 196.0A23.3 23.3 0 0 1 322.9 237.8A23.3 23.3 0 0 1 335.7 282.6A23.3 23.3 0 0 1 340.0 329.1L340.0 650Z"/></clipPath>
-<g id="fr660"><use href="#o660" fill="url(#gg)" stroke="#9a6a14" stroke-width="1.4"/><use href="#b660" style="fill:var(--b)"/><use href="#m660" fill="none" stroke="#f3d58a" stroke-width="3.2" stroke-dasharray="0.1 9" stroke-linecap="round"/><use href="#i660" style="fill:var(--i)" stroke="#c9922c" stroke-width="2"/><path d="M200 78C184 60 184 36 200 14C216 36 216 60 200 78Z" fill="url(#gg)" stroke="#9a6a14" stroke-width="1.2"/><circle cx="200" cy="9" r="4.5" fill="#d9a441"/><rect x="189" y="72" width="22" height="7" rx="3" fill="#b9852a"/><use href="#curl" transform="translate(193 62)"/><use href="#curl" transform="translate(207 62) scale(-1 1)"/><use href="#curl" transform="translate(30 321) scale(-1 1)"/><use href="#curl" transform="translate(370 321)"/><rect x="24" y="644" width="352" height="8" rx="3" fill="url(#gg)"/></g>
-</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="ros" fill="#d9a441"><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(45)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(90)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(135)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(180)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(225)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(270)"/><ellipse cx="0" cy="-11" rx="4.5" ry="9" transform="rotate(315)"/><circle r="4.5" fill="#0f6b68"/></g></defs></svg>
 
 <div id="gate">
   <div id="scene"><div class="stage">
@@ -249,7 +275,7 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
   <img class="ganesh" src="ganesh.png" alt="Lord Ganesha">
   <p class="shloka">॥ श्री गणेशाय नमः ॥</p>
   <p class="welcome">With joyful hearts, we welcome you to the celebration of a lifetime.</p>
-  <div class="namearch ar"><svg viewBox="0 0 400 560" aria-hidden="true"><use href="#fr560"/><use href="#ros" transform="translate(200 175) scale(1.5)"/></svg><div class="in"><h1 class="names">Saket<i>&amp;</i>Chanchal</h1><p class="hash">#SangChal</p></div></div>
+  <div class="ac nm"><svg class="ros" viewBox="-22 -22 44 44" aria-hidden="true"><use href="#ros"/></svg><h1 class="names">Saket<i>&amp;</i>Chanchal</h1><p class="hash">#SangChal</p></div>
   <p class="bless">May Lord Ganesha’s blessings light their path,<br>May love and laughter fill every step they take,<br>And may your presence make our joy complete.<br>Two hearts, two families, one beautiful beginning.</p>
   <a class="place" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Garh Panchkot, West Bengal</a>
 </div></section>
@@ -257,19 +283,19 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 <section class="fam"><div class="wrap rv">
   <h2>The Agarwal and Gupta Families</h2>
   <p class="inv">request the honour of your presence as we celebrate the union of our children and seek your blessings as they begin their journey together.</p>
-  <div class="pair"><div class="fa ar"><svg viewBox="0 0 400 660" aria-hidden="true"><use href="#fr660"/><use href="#ros" transform="translate(200 190) scale(1.6)"/></svg><div class="in"><small>The Groom</small><h3>Saket Agarwal</h3><p><em>son of</em>Shri Sanjay Agarwal<br>&amp;<br>Smt. Sarita Agarwal</p></div></div><div class="fa ar"><svg viewBox="0 0 400 660" aria-hidden="true"><use href="#fr660"/><use href="#ros" transform="translate(200 190) scale(1.6)"/></svg><div class="in"><small>The Bride</small><h3>Chanchal Gupta</h3><p><em>daughter of</em>Shri Anil Kumar Gupta<br>&amp;<br>Smt. Sarita Gupta</p></div></div><div class="amp" aria-hidden="true">&amp;</div>
+  <div class="pair"><div class="ac fm"><svg class="ros" viewBox="-22 -22 44 44" aria-hidden="true"><use href="#ros"/></svg><small>The Groom</small><h3>Saket Agarwal</h3><p><em>son of</em>Shri Sanjay Agarwal<br>&amp;<br>Smt. Sarita Agarwal</p></div><div class="ac fm"><svg class="ros" viewBox="-22 -22 44 44" aria-hidden="true"><use href="#ros"/></svg><small>The Bride</small><h3>Chanchal Gupta</h3><p><em>daughter of</em>Shri Anil Kumar Gupta<br>&amp;<br>Smt. Sarita Gupta</p></div><div class="amp" aria-hidden="true">&amp;</div>
   </div>
 </div></section>
 
 <section class="save"><div class="wrap rv">
   <p class="kick">Mark your calendar</p><h2 class="sec-h">Save the Date</h2><p class="sub">Scratch the golden card to reveal</p>
-  <div class="scratch" id="scratch"><div><small>Wednesday &amp; Thursday</small><b>2nd &amp; 3rd</b><span>December 2026</span></div><canvas id="foil" aria-hidden="true"></canvas></div>
+  <div class="ac sc" id="scratch"><svg class="ros" viewBox="-22 -22 44 44" aria-hidden="true"><use href="#ros"/></svg><div><small>Wednesday &amp; Thursday</small><b>2nd &amp; 3rd</b><span>December 2026</span></div><canvas id="foil" aria-hidden="true"></canvas></div>
   <button class="linkbtn" id="revealBtn" type="button">Or tap here to reveal</button>
 </div></section>
 
 <section class="count"><div class="wrap rv">
   <p class="kick">Counting down to the wedding day</p>
-  <div class="cds" id="cds"><div class="cdb"><b>–</b><span>Days</span></div><div class="cdb"><b>–</b><span>Hours</span></div><div class="cdb"><b>–</b><span>Minutes</span></div><div class="cdb"><b>–</b><span>Seconds</span></div></div>
+  <div class="cds" id="cds"><div class="cdb ac cb"><b>–</b><span>Days</span></div><div class="cdb ac cb"><b>–</b><span>Hours</span></div><div class="cdb ac cb"><b>–</b><span>Minutes</span></div><div class="cdb ac cb"><b>–</b><span>Seconds</span></div></div>
   <p>Thursday, 3 December 2026</p>
 </div></section>
 
@@ -281,10 +307,10 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 <section class="glance"><div class="wrap rv">
   <p class="kick">Plan your two days</p><h2 class="sec-h">At a Glance</h2>
   <div class="days">
-    <div class="day"><h3><small>Day one</small>Wednesday, 2 December</h3>
+    <div class="day ac dy"><h3><small>Day one</small>Wednesday, 2 December</h3>
       <div class="row" style="--c:#c2185b"><time>3:00 – 5:00 PM</time><div><b>Myraah</b><span>Small Hall</span></div></div>
       <div class="row" style="--c:#7b2cbf"><time>6:00 – 11:00 PM</time><div><b>Sangeet</b><span>Open Lawn</span></div></div></div>
-    <div class="day"><h3><small>Day two</small>Thursday, 3 December</h3>
+    <div class="day ac dy"><h3><small>Day two</small>Thursday, 3 December</h3>
       <div class="row" style="--c:#6aa8d6"><time>10:00 AM – 1:00 PM</time><div><b>Carnival</b><span>Open Lawn 2</span></div></div>
       <div class="row" style="--c:#5a0f1e"><time>7:00 – 11:00 PM</time><div><b>The Wedding</b><span>Garh Panchkot Eco Tourism II</span></div></div></div>
   </div>
@@ -296,6 +322,8 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
   <p style="margin-top:1.4rem"><a href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener">Garh Panchkot Eco Tourism II · View on map</a></p>
 </div></section>
 </main>
+<audio id="song" src="song.mp3" loop preload="none"></audio>
+<button id="music" class="music" type="button" aria-label="Pause music" hidden><i></i><i></i><i></i></button>
 <canvas id="fx"></canvas>
 
 <script>
@@ -325,12 +353,30 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
     pw=cv.width=Math.round(r.width*R);ph=cv.height=Math.round(r.height*R);
     last=performance.now();until=last+ms;requestAnimationFrame(frame);
   }
+
+  // Background song: starts when the gate is tapped, with a pause button
+  var au=document.getElementById('song'),mb=document.getElementById('music'),vf,resume=false;
+  function setBtn(on){mb.classList.toggle('on',on);mb.setAttribute('aria-label',on?'Pause music':'Play music')}
+  function fadeTo(v,ms,done){clearInterval(vf);var a=au.volume,n=Math.max(1,ms/50),i=0;vf=setInterval(function(){i++;au.volume=Math.min(1,Math.max(0,a+(v-a)*i/n));if(i>=n){clearInterval(vf);if(done)done()}},50)}
+  function playSong(){
+    au.volume=0;var p=au.play();
+    if(p&&p.then)p.then(function(){mb.hidden=false;setBtn(true);fadeTo(.65,2500)}).catch(function(){if(!au.error){mb.hidden=false;setBtn(false)}});
+  }
+  au.addEventListener('error',function(){mb.hidden=true});
+  mb.addEventListener('click',function(){
+    if(au.paused){au.volume=0;var p=au.play();if(p&&p.catch)p.catch(function(){});setBtn(true);fadeTo(.65,800)}
+    else{setBtn(false);fadeTo(0,500,function(){au.pause()})}
+  });
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){resume=!au.paused;au.pause()}
+    else if(resume){resume=false;var p=au.play();if(p&&p.catch)p.catch(function(){})}
+  });
   door.addEventListener('click',function(){
     if(gate.classList.contains('opening'))return;
     var r=door.getBoundingClientRect();
     scene.style.transformOrigin=(r.left+r.width/2)+'px '+(r.top+r.height*.62)+'px';
     gate.style.setProperty('--z',Math.max(6,innerWidth/r.width*2.6));
-    gate.classList.add('opening');document.body.classList.add('entered');
+    gate.classList.add('opening');document.body.classList.add('entered');playSong();
     setTimeout(function(){startPetals(2600)},300);
     var t=still?[0,0,500]:[900,2300,3400];
     setTimeout(function(){gate.classList.add('zoom')},t[0]);
