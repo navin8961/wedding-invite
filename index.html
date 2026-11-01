@@ -9,9 +9,9 @@
 <script>document.documentElement.className='js'</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Tiro+Devanagari+Hindi&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--teal:#0f6b68;--teal2:#0a4b49;--gold:#d9a441;--gold2:#f3d58a;--gdk:#9a6a14;--ivory:#fff7ea;--ink:#3d2418;--disp:'Rozha One',Georgia,serif;--body:'Cormorant Garamond',Georgia,serif}
+:root{--teal:#0f6b68;--teal2:#0a4b49;--gold:#d9a441;--gold2:#f3d58a;--gdk:#9a6a14;--ivory:#fff7ea;--ink:#3d2418;--disp:'Cinzel',Georgia,serif;--script:'Pinyon Script','Snell Roundhand',cursive;--body:'Cormorant Garamond',Georgia,serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--body);font-size:1.2rem;line-height:1.6;color:var(--ink);background:var(--ivory)}
@@ -161,7 +161,7 @@ section{position:relative}
 .evtxt .where{margin-bottom:1.1rem}
 
 /* Event cards: editorial look */
-:root{--serif:'Cormorant Garamond',Georgia,serif;--sans:'Montserrat','Helvetica Neue',Arial,sans-serif}
+:root{--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost','Helvetica Neue',Arial,sans-serif}
 .ev{padding:4.2rem 0 4.5rem}
 .ln{position:absolute;top:0;bottom:0;width:0;border-left:1px solid var(--ln);opacity:.7}
 .ln.l{left:14px}.ln.r{right:14px}
@@ -223,6 +223,63 @@ section{position:relative}
 @keyframes eq{from{height:6px}to{height:20px}}
 @media (prefers-reduced-motion:reduce){.music i{animation:none;height:12px}}
 
+/* Premium type and larger text */
+body{font-size:1.3rem;font-weight:500}
+h1,h2,h3{font-weight:600;letter-spacing:.02em}
+.wrap{max-width:680px;padding:0 1.1rem}
+.kick{font-family:var(--disp);font-size:.95rem;letter-spacing:.26em;font-weight:600}
+.sec-h{font-size:clamp(2rem,9vw,3rem);letter-spacing:.04em}
+.sub{font-size:1.4rem}
+/* opening */
+.ganesh{width:116px}
+.shloka{font-family:'Tiro Devanagari Hindi',var(--serif);font-size:1.9rem;letter-spacing:0;margin:.5rem 0 .8rem}
+.welcome{font-size:1.5rem;max-width:26rem;line-height:1.5}
+.nm{--a:.8;width:min(90vw,440px);padding:30% 6% 9%}
+.nm .names{font-family:var(--script);font-weight:400;font-size:19cqw;line-height:1.02;letter-spacing:0}
+.nm .names i{font-family:var(--script);font-size:.55em;margin:.05em 0}
+.nm .hash{font-family:var(--disp);font-weight:600;font-size:5.4cqw;letter-spacing:.24em;margin-top:.6rem}
+.bless{font-size:1.45rem;max-width:30rem;line-height:1.65;margin:2.2rem auto 1.5rem}
+.place{font-family:var(--disp);font-weight:600;font-size:.88rem;letter-spacing:.06em;max-width:92vw}
+/* families */
+.fam{padding:4.5rem 0 4rem}
+.fam .wrap{padding:0 .7rem}
+.fam h2{font-family:var(--disp);font-size:clamp(1.5rem,6.6vw,2.3rem);line-height:1.3;letter-spacing:.04em}
+.inv{font-size:1.45rem;max-width:34rem;line-height:1.6}
+.pair{gap:.6rem}
+.fm{--a:.56;padding:32% 5% 8%}
+.fm small{font-family:var(--disp);font-size:max(10px,3.6cqw);font-weight:600}
+.fm h3{font-size:max(15px,8.4cqw);letter-spacing:.01em;line-height:1.15}
+.fm p{font-family:var(--body);font-size:max(14px,6.6cqw);font-weight:600;line-height:1.3}
+.amp{font-family:var(--script);font-size:2rem;padding-bottom:.2rem}
+/* save the date */
+.sc{--a:.78;width:min(84vw,330px);padding:27% 6% 8%}
+.sc small{font-family:var(--disp);font-size:max(10px,3.4cqw);font-weight:600}
+.sc b{font-family:var(--script);font-size:21cqw;line-height:1.05}
+.sc span{font-family:var(--body);font-size:7.5cqw;font-weight:600}
+/* countdown */
+.cdb b{font-family:var(--disp);font-weight:600;font-size:clamp(1.9rem,9vw,2.8rem)}
+.cdb span{font-family:var(--disp);font-size:.78rem;font-weight:600;letter-spacing:.08em}
+/* events */
+.evd{font-family:var(--disp);font-weight:600;font-size:1.05rem;letter-spacing:.26em}
+.ev .evt{font-family:var(--script);font-weight:400;font-size:clamp(3.8rem,17vw,5.6rem);line-height:1.05;letter-spacing:0}
+.evtm{font-size:1.35rem}
+.evp2{font-size:1.18rem;line-height:1.8}
+.evl{font-size:1.15rem}
+.bt{font-family:var(--disp);font-size:.95rem;letter-spacing:.12em;padding:.9rem 1.5rem}
+/* at a glance */
+.day h3{font-family:var(--disp);font-size:1.4rem}
+.row{grid-template-columns:8.6rem 1fr}
+.row time{font-family:var(--sans);font-size:1.12rem}
+.row b{font-family:var(--disp);font-size:1.1rem;font-weight:600}
+.row span{font-family:var(--sans);font-size:1.02rem}
+/* ending */
+.end .love{font-family:var(--script);font-style:normal;font-size:2.8rem;margin-top:2rem}
+.end h2{font-family:var(--disp);font-size:clamp(1.5rem,6.6vw,2.3rem);line-height:1.3}
+.end .hash{font-family:var(--disp);letter-spacing:.2em}
+/* gate lettering */
+.caption b{font-family:var(--script);font-weight:400;font-size:11.5cqw;line-height:1.05;letter-spacing:0}
+.caption span{font-family:var(--disp);font-style:normal;font-weight:600;font-size:3.3cqw;letter-spacing:.2em;text-transform:uppercase}
+
 /* Palace gate: the entrance scene (real picture) */
 body.locked{overflow:hidden}
 #gate{--h:100vh;position:fixed;inset:0;z-index:50;overflow:hidden;transition:opacity .9s ease}
@@ -275,7 +332,7 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
   <img class="ganesh" src="ganesh.png" alt="Lord Ganesha">
   <p class="shloka">॥ श्री गणेशाय नमः ॥</p>
   <p class="welcome">With joyful hearts, we welcome you to the celebration of a lifetime.</p>
-  <div class="ac nm"><svg class="ros" viewBox="-22 -22 44 44" aria-hidden="true"><use href="#ros"/></svg><h1 class="names">Saket<i>&amp;</i>Chanchal</h1><p class="hash">#SangChal</p></div>
+  <div class="ac nm"><h1 class="names">Saket<i>&amp;</i>Chanchal</h1><p class="hash">#SangChal</p></div>
   <p class="bless">May Lord Ganesha’s blessings light their path,<br>May love and laughter fill every step they take,<br>And may your presence make our joy complete.<br>Two hearts, two families, one beautiful beginning.</p>
   <a class="place" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Garh Panchkot, West Bengal</a>
 </div></section>
@@ -283,19 +340,19 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 <section class="fam"><div class="wrap rv">
   <h2>The Agarwal and Gupta Families</h2>
   <p class="inv">request the honour of your presence as we celebrate the union of our children and seek your blessings as they begin their journey together.</p>
-  <div class="pair"><div class="ac fm"><svg class="ros" viewBox="-22 -22 44 44" aria-hidden="true"><use href="#ros"/></svg><small>The Groom</small><h3>Saket Agarwal</h3><p><em>son of</em>Shri Sanjay Agarwal<br>&amp;<br>Smt. Sarita Agarwal</p></div><div class="ac fm"><svg class="ros" viewBox="-22 -22 44 44" aria-hidden="true"><use href="#ros"/></svg><small>The Bride</small><h3>Chanchal Gupta</h3><p><em>daughter of</em>Shri Anil Kumar Gupta<br>&amp;<br>Smt. Sarita Gupta</p></div><div class="amp" aria-hidden="true">&amp;</div>
+  <div class="pair"><div class="ac fm"><small>The Groom</small><h3>Saket Agarwal</h3><p><em>son of</em>Shri Sanjay Agarwal<br>&amp;<br>Smt. Sarita Agarwal</p></div><div class="ac fm"><small>The Bride</small><h3>Chanchal Gupta</h3><p><em>daughter of</em>Shri Anil Kumar Gupta<br>&amp;<br>Smt. Sarita Gupta</p></div><div class="amp" aria-hidden="true">&amp;</div>
   </div>
 </div></section>
 
 <section class="save"><div class="wrap rv">
   <p class="kick">Mark your calendar</p><h2 class="sec-h">Save the Date</h2><p class="sub">Scratch the golden card to reveal</p>
-  <div class="ac sc" id="scratch"><svg class="ros" viewBox="-22 -22 44 44" aria-hidden="true"><use href="#ros"/></svg><div><small>Wednesday &amp; Thursday</small><b>2nd &amp; 3rd</b><span>December 2026</span></div><canvas id="foil" aria-hidden="true"></canvas></div>
+  <div class="ac sc" id="scratch"><div><small>Wednesday &amp; Thursday</small><b>2nd &amp; 3rd</b><span>December 2026</span></div><canvas id="foil" aria-hidden="true"></canvas></div>
   <button class="linkbtn" id="revealBtn" type="button">Or tap here to reveal</button>
 </div></section>
 
 <section class="count"><div class="wrap rv">
   <p class="kick">Counting down to the wedding day</p>
-  <div class="cds" id="cds"><div class="cdb ac cb"><b>–</b><span>Days</span></div><div class="cdb ac cb"><b>–</b><span>Hours</span></div><div class="cdb ac cb"><b>–</b><span>Minutes</span></div><div class="cdb ac cb"><b>–</b><span>Seconds</span></div></div>
+  <div class="cds" id="cds"><div class="cdb"><b>–</b><span>Days</span></div><div class="cdb"><b>–</b><span>Hours</span></div><div class="cdb"><b>–</b><span>Minutes</span></div><div class="cdb"><b>–</b><span>Seconds</span></div></div>
   <p>Thursday, 3 December 2026</p>
 </div></section>
 
@@ -307,10 +364,10 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 <section class="glance"><div class="wrap rv">
   <p class="kick">Plan your two days</p><h2 class="sec-h">At a Glance</h2>
   <div class="days">
-    <div class="day ac dy"><h3><small>Day one</small>Wednesday, 2 December</h3>
+    <div class="day"><h3><small>Day one</small>Wednesday, 2 December</h3>
       <div class="row" style="--c:#c2185b"><time>3:00 – 5:00 PM</time><div><b>Myraah</b><span>Small Hall</span></div></div>
       <div class="row" style="--c:#7b2cbf"><time>6:00 – 11:00 PM</time><div><b>Sangeet</b><span>Open Lawn</span></div></div></div>
-    <div class="day ac dy"><h3><small>Day two</small>Thursday, 3 December</h3>
+    <div class="day"><h3><small>Day two</small>Thursday, 3 December</h3>
       <div class="row" style="--c:#6aa8d6"><time>10:00 AM – 1:00 PM</time><div><b>Carnival</b><span>Open Lawn 2</span></div></div>
       <div class="row" style="--c:#5a0f1e"><time>7:00 – 11:00 PM</time><div><b>The Wedding</b><span>Garh Panchkot Eco Tourism II</span></div></div></div>
   </div>
