@@ -559,6 +559,14 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 .end .wrap{display:flex;flex-direction:column;align-items:center}
 .end h2{white-space:nowrap;font-size:clamp(1rem,4.7vw,2.1rem)!important;letter-spacing:-.025em}
 .end .navin-credit{align-self:stretch;text-align:center;margin-top:3.5rem!important;padding-bottom:.25rem;font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;color:#f3d58a;opacity:.42}
+
+/* Final fine-tuning: keep the date secondary to the highlighted 2nd & 3rd. */
+#scratch small{font-size:clamp(.72rem,2.7vw,.9rem)!important;letter-spacing:.1em!important;font-weight:600!important;line-height:1.2}
+#scratch span{font-size:clamp(.92rem,3.4vw,1.12rem)!important;font-weight:500!important;line-height:1.2;display:block;margin-top:.2rem}
+#sd{opacity:0;pointer-events:none;transition:opacity .25s ease!important}
+#sd.on{opacity:1;pointer-events:auto}
+#sd.scrolled-away{opacity:0!important;pointer-events:none!important;visibility:hidden!important}
+
 </style>
 </head>
 <body class="locked">
@@ -607,7 +615,7 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 <section class="gl2"><div class="wrap rv"><p class="kick">Plan your two days</p><h2 class="sec-h">At a Glance</h2></div><div class="tl" id="tl"><i class="thread"><b id="thr"></b></i><div class="dayb">Wednesday, 2 December</div><div class="it l"><span class="dy"><svg class="dya" viewBox="0 0 44 44" aria-hidden="true"><path class="fl" d="M22 4c5 6 6 10 0 15-6-5-5-9 0-15z"/><path d="M6 24c0 8 7 14 16 14s16-6 16-14z" fill="#b9652a" stroke="#8a4a1e" stroke-width="1.5"/><ellipse cx="22" cy="24" rx="16" ry="3.5" fill="#6b3414"/></svg></span><div class="tx"><small><i class="sun"></i>1:00 – 3:00 PM</small><b>Myraah</b><em>Outside Big Banquet Hall</em><u>Garh Panchkot Eco Tourism II</u></div></div><div class="it r"><span class="dy"><svg class="dya" viewBox="0 0 44 44" aria-hidden="true"><path class="fl" d="M22 4c5 6 6 10 0 15-6-5-5-9 0-15z"/><path d="M6 24c0 8 7 14 16 14s16-6 16-14z" fill="#b9652a" stroke="#8a4a1e" stroke-width="1.5"/><ellipse cx="22" cy="24" rx="16" ry="3.5" fill="#6b3414"/></svg></span><div class="tx"><small><i class="moon"></i>6:00 – 11:00 PM</small><b>Sangeet</b><em>Big Lawn</em><u>Garh Panchkot Eco Tourism II</u></div></div><div class="dayb">Thursday, 3 December</div><div class="it l"><span class="dy"><svg class="dya" viewBox="0 0 44 44" aria-hidden="true"><path class="fl" d="M22 4c5 6 6 10 0 15-6-5-5-9 0-15z"/><path d="M6 24c0 8 7 14 16 14s16-6 16-14z" fill="#b9652a" stroke="#8a4a1e" stroke-width="1.5"/><ellipse cx="22" cy="24" rx="16" ry="3.5" fill="#6b3414"/></svg></span><div class="tx"><small><i class="sun"></i>10:00 AM – 1:00 PM</small><b>Carnival</b><em>Pool side area</em><u>Garh Panchkot Eco Tourism II</u></div></div><div class="it r"><span class="dy"><svg class="dya" viewBox="0 0 44 44" aria-hidden="true"><path class="fl" d="M22 4c5 6 6 10 0 15-6-5-5-9 0-15z"/><path d="M6 24c0 8 7 14 16 14s16-6 16-14z" fill="#b9652a" stroke="#8a4a1e" stroke-width="1.5"/><ellipse cx="22" cy="24" rx="16" ry="3.5" fill="#6b3414"/></svg></span><div class="tx"><small><i class="moon"></i>7:00 – 11:00 PM</small><b>The Wedding</b><em>Big Lawn</em><u>Garh Panchkot Eco Tourism II</u></div></div><div class="it fin"><span class="dy"><svg class="dya" viewBox="0 0 44 44" aria-hidden="true"><path class="fl" d="M22 4c5 6 6 10 0 15-6-5-5-9 0-15z"/><path d="M6 24c0 8 7 14 16 14s16-6 16-14z" fill="#b9652a" stroke="#8a4a1e" stroke-width="1.5"/><ellipse cx="22" cy="24" rx="16" ry="3.5" fill="#6b3414"/></svg></span><div class="tx"><b>The celebration begins</b></div></div></div></section>
 <section class="mp"><div class="wrap rv"><p class="kick">Find us</p><h2 class="sec-h">The Venue</h2><div class="mapbox"><iframe title="Map of Garh Panchkot Eco Tourism II" src="https://www.google.com/maps?q=Garh+Panchkot+Eco+Tourism+II+Puapur+West+Bengal&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div><p class="pl2">Garh Panchkot Eco Tourism II</p><p class="ad">Garpanchkot, Puapur, West Bengal 723121</p><a class="bt" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></svg>Directions</a></div></section>
 
-<section class="bs"><div class="toran"></div><div class="bstage" id="bstage"><div class="pend" id="pend"><img class="bell" src="bell-s.webp" alt="" width="54" height="78"></div><div class="nm2"><div class="ln1"><span class="tt">CHANCHAL</span><span class="tt">SAKET</span><span class="tt">#SANGCHAL</span></div></div></div></section>
+<section class="bs"><div class="toran"></div><div class="bstage" id="bstage"><div class="pend" id="pend"><img class="bell" src="bell-s.webp" alt="" width="54" height="78"></div><div class="nm2"><div class="ln1"><span class="tt">SAKET</span><span class="tt">CHANCHAL</span><span class="tt">#SANGCHAL</span></div></div></div></section>
 <section class="end"><div class="toran"></div><div class="wrap rv">
   <p class="love">With Love,</p><h2>Agarwal and Gupta Family</h2>
   <p class="hash">#SangChal</p><p class="navin-credit">Made with love by Navin</p>
@@ -692,11 +700,12 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
   jr.addEventListener('scroll',function(){cnt.textContent=Math.min(10,Math.round(jr.scrollLeft/210)+1)+' / 10'},{passive:true});
   if(window.IntersectionObserver&&!still)new IntersectionObserver(function(e,o){if(e[0].isIntersecting){o.disconnect();setTimeout(function(){jr.scrollTo({left:120,behavior:'smooth'});setTimeout(function(){jr.scrollTo({left:0,behavior:'smooth'})},900)},500)}},{threshold:.6}).observe(jr);
   // Scroll cue and progress bar
-  var pb=document.getElementById('pb'),sd=document.getElementById('sd');
-  function prog(){var h=document.documentElement.scrollHeight-innerHeight;pb.style.width=(h>0?scrollY/h*100:0)+'%';}
+  var pb=document.getElementById('pb'),sd=document.getElementById('sd'),cueDismissed=false;
+  function hideCue(){cueDismissed=true;sd.classList.add('scrolled-away');sd.classList.remove('on');sd.style.opacity='0';sd.style.pointerEvents='none';}
+  function prog(){var h=document.documentElement.scrollHeight-innerHeight;pb.style.width=(h>0?scrollY/h*100:0)+'%';if(scrollY>10)hideCue();}
   addEventListener('scroll',prog,{passive:true});
-  function armCue(){sd.classList.add('on')}
-  sd.addEventListener('click',function(){window.scrollBy({top:Math.max(360,innerHeight*.78),behavior:'smooth'})});
+  function armCue(){if(!cueDismissed){sd.classList.add('on');sd.classList.remove('scrolled-away');sd.style.opacity='1';sd.style.pointerEvents='auto';}prog()}
+  sd.addEventListener('click',function(){hideCue();window.scrollBy({top:Math.max(360,innerHeight*.78),behavior:'smooth'})});
   // Diya timeline: the thread fills and the lamps light as you scroll
   var tl=document.getElementById('tl'),thr=document.getElementById('thr'),its=[].slice.call(tl.querySelectorAll('.it'));
   function tlp(){var r=tl.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.62-r.top)/r.height));thr.style.height=(p*100)+'%';
