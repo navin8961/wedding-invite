@@ -536,22 +536,29 @@ body.locked{overflow:hidden}
 body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 
 /* Final requested refinements */
-.nm,.fm{
-  background-image:linear-gradient(rgba(255,250,240,.12),rgba(255,250,240,.12)),url(arch-floral.webp);
-}
-.fm{background-size:100% 100%;background-repeat:no-repeat}
-.nm{background-size:100% 100%;background-repeat:no-repeat}
-.ec>.rg{left:10%!important;top:10%!important;width:80%!important;opacity:.14!important}
+/* Keep the family arches' original floral appearance and restore readable text. */
+.nm,.fm{background:url(arch-floral.webp) center/100% 100% no-repeat!important}
+.nm>*,.fm>*{position:relative;z-index:1;text-shadow:0 0 5px #fffaf0,0 0 2px #fffaf0}
+.fm small,.fm h3,.fm p{color:#3d2418!important}
+.fm small{font-weight:700}
+.fm h3{color:#0f6b68!important}
+/* Keep rangoli in the event's text/context zone, never over the event photograph. */
+.ec{isolation:isolate}
+.ec>.rg{left:10%!important;top:auto!important;bottom:1.5rem!important;width:80%!important;opacity:.14!important;z-index:-1!important}
 .ec.sangeet{background:#21151f!important;--txt:#fff5e8;--ttl:#f3d58a;--tm:#f3d58a;--dt:#d9b879;--ln:#d9b879}
 .ec.sangeet>.rg{opacity:.12!important}
-.save{padding-bottom:2.4rem}
-.save .sub{margin-bottom:.25rem}
-#scratch{margin-bottom:.35rem}
-#revealBtn{margin-top:.25rem}
-#sd{opacity:0;pointer-events:none}
-#sd.on{opacity:1}
-.navin-credit{margin-top:2.2rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;color:#f3d58a;opacity:.9}
-
+/* Tighter save-the-date layout and stronger hierarchy under the scratch card. */
+.save{padding-top:3.2rem;padding-bottom:2.4rem}
+.save .sub{margin-bottom:.25rem;font-size:1.12rem}
+#scratch{margin-bottom:.25rem}
+#revealBtn{display:block;margin:.35rem auto 0;font-size:1.12rem;font-weight:600}
+/* Persistent, visible scroll cue. */
+#sd{opacity:1!important;pointer-events:auto!important;bottom:18px;background:#0f6b68f2;color:#fffaf0;box-shadow:0 4px 18px #0003}
+#sd.on{opacity:1!important}
+/* Closing lines: keep the family line on one line and the credit faded at the bottom. */
+.end .wrap{display:flex;flex-direction:column;align-items:center}
+.end h2{white-space:nowrap;font-size:clamp(1rem,4.7vw,2.1rem)!important;letter-spacing:-.025em}
+.end .navin-credit{align-self:stretch;text-align:center;margin-top:3.5rem!important;padding-bottom:.25rem;font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;color:#f3d58a;opacity:.42}
 </style>
 </head>
 <body class="locked">
@@ -609,7 +616,7 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 <audio id="song" src="song.mp3" loop preload="none"></audio>
 <button id="music" class="music" type="button" aria-label="Pause music" hidden><i></i><i></i><i></i></button>
 <div id="lns" aria-hidden="true"></div>
-<div id="pb"></div><div id="sd" aria-hidden="true">Scroll down to read the invitation<i></i></div>
+<div id="pb"></div><button id="sd" type="button" aria-label="Scroll down to read the invitation">Scroll down to read the invitation<i></i></button>
 <canvas id="fx"></canvas>
 
 <script>
@@ -688,7 +695,8 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
   var pb=document.getElementById('pb'),sd=document.getElementById('sd');
   function prog(){var h=document.documentElement.scrollHeight-innerHeight;pb.style.width=(h>0?scrollY/h*100:0)+'%';}
   addEventListener('scroll',prog,{passive:true});
-  function armCue(){sd.classList.add('on');setTimeout(function(){if(scrollY<20&&!still){scrollBy({top:110,behavior:'smooth'});setTimeout(function(){scrollTo({top:0,behavior:'smooth'})},750)}},4500)}
+  function armCue(){sd.classList.add('on')}
+  sd.addEventListener('click',function(){window.scrollBy({top:Math.max(360,innerHeight*.78),behavior:'smooth'})});
   // Diya timeline: the thread fills and the lamps light as you scroll
   var tl=document.getElementById('tl'),thr=document.getElementById('thr'),its=[].slice.call(tl.querySelectorAll('.it'));
   function tlp(){var r=tl.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.62-r.top)/r.height));thr.style.height=(p*100)+'%';
