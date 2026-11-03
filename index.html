@@ -534,6 +534,24 @@ body.locked{overflow:hidden}
 @keyframes beat{0%,100%{filter:drop-shadow(0 0 5px #ffc65a99)}50%{filter:drop-shadow(0 0 16px #ffd36bff)}}
 @keyframes land{from{opacity:0;transform:scale(1.2)}to{opacity:1;transform:none}}
 body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
+
+/* Final requested refinements */
+.nm,.fm{
+  background-image:linear-gradient(rgba(255,250,240,.12),rgba(255,250,240,.12)),url(arch-floral.webp);
+}
+.fm{background-size:100% 100%;background-repeat:no-repeat}
+.nm{background-size:100% 100%;background-repeat:no-repeat}
+.ec>.rg{left:10%!important;top:10%!important;width:80%!important;opacity:.14!important}
+.ec.sangeet{background:#21151f!important;--txt:#fff5e8;--ttl:#f3d58a;--tm:#f3d58a;--dt:#d9b879;--ln:#d9b879}
+.ec.sangeet>.rg{opacity:.12!important}
+.save{padding-bottom:2.4rem}
+.save .sub{margin-bottom:.25rem}
+#scratch{margin-bottom:.35rem}
+#revealBtn{margin-top:.25rem}
+#sd{opacity:0;pointer-events:none}
+#sd.on{opacity:1}
+.navin-credit{margin-top:2.2rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;color:#f3d58a;opacity:.9}
+
 </style>
 </head>
 <body class="locked">
@@ -584,8 +602,8 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 
 <section class="bs"><div class="toran"></div><div class="bstage" id="bstage"><div class="pend" id="pend"><img class="bell" src="bell-s.webp" alt="" width="54" height="78"></div><div class="nm2"><div class="ln1"><span class="tt">CHANCHAL</span><span class="tt">SAKET</span><span class="tt">#SANGCHAL</span></div></div></div></section>
 <section class="end"><div class="toran"></div><div class="wrap rv">
-  <p class="love">With love,</p><h2>The Agarwal and Gupta Families</h2>
-  <p class="hash">#SangChal</p>
+  <p class="love">With Love,</p><h2>Agarwal and Gupta Family</h2>
+  <p class="hash">#SangChal</p><p class="navin-credit">Made with love by Navin</p>
 </div></section>
 </main>
 <audio id="song" src="song.mp3" loop preload="none"></audio>
@@ -668,7 +686,7 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
   if(window.IntersectionObserver&&!still)new IntersectionObserver(function(e,o){if(e[0].isIntersecting){o.disconnect();setTimeout(function(){jr.scrollTo({left:120,behavior:'smooth'});setTimeout(function(){jr.scrollTo({left:0,behavior:'smooth'})},900)},500)}},{threshold:.6}).observe(jr);
   // Scroll cue and progress bar
   var pb=document.getElementById('pb'),sd=document.getElementById('sd');
-  function prog(){var h=document.documentElement.scrollHeight-innerHeight;pb.style.width=(h>0?scrollY/h*100:0)+'%';if(scrollY>30)sd.classList.remove('on')}
+  function prog(){var h=document.documentElement.scrollHeight-innerHeight;pb.style.width=(h>0?scrollY/h*100:0)+'%';}
   addEventListener('scroll',prog,{passive:true});
   function armCue(){sd.classList.add('on');setTimeout(function(){if(scrollY<20&&!still){scrollBy({top:110,behavior:'smooth'});setTimeout(function(){scrollTo({top:0,behavior:'smooth'})},750)}},4500)}
   // Diya timeline: the thread fills and the lamps light as you scroll
