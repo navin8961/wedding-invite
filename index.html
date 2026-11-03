@@ -552,20 +552,35 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
 .save .sub{margin-bottom:.25rem;font-size:1.12rem}
 #scratch{margin-bottom:.25rem}
 #revealBtn{display:block;margin:.35rem auto 0;font-size:1.12rem;font-weight:600}
-/* Persistent, visible scroll cue. */
-#sd{opacity:1!important;pointer-events:auto!important;bottom:18px;background:#0f6b68f2;color:#fffaf0;box-shadow:0 4px 18px #0003}
-#sd.on{opacity:1!important}
-/* Closing lines: keep the family line on one line and the credit faded at the bottom. */
-.end .wrap{display:flex;flex-direction:column;align-items:center}
-.end h2{white-space:nowrap;font-size:clamp(1rem,4.7vw,2.1rem)!important;letter-spacing:-.025em}
-.end .navin-credit{align-self:stretch;text-align:center;margin-top:3.5rem!important;padding-bottom:.25rem;font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;color:#f3d58a;opacity:.42}
-
-/* Final fine-tuning: keep the date secondary to the highlighted 2nd & 3rd. */
-#scratch small{font-size:clamp(.72rem,2.7vw,.9rem)!important;letter-spacing:.1em!important;font-weight:600!important;line-height:1.2}
-#scratch span{font-size:clamp(.92rem,3.4vw,1.12rem)!important;font-weight:500!important;line-height:1.2;display:block;margin-top:.2rem}
-#sd{opacity:0;pointer-events:none;transition:opacity .25s ease!important}
-#sd.on{opacity:1;pointer-events:auto}
+/* Scroll cue: visible after gate opening; hidden after the first downward scroll. */
+#sd{display:block!important;position:fixed!important;left:50%!important;bottom:18px!important;transform:translateX(-50%)!important;z-index:999999!important;opacity:0;pointer-events:none;visibility:hidden;color:#fffaf0;background:#0f6b68f2;border:1px solid var(--gold);box-shadow:0 4px 18px #0003;padding:.55rem 1.1rem .35rem;border-radius:18px;font-family:var(--disp);font-size:.74rem;letter-spacing:.1em;white-space:nowrap;transition:opacity .25s ease!important}
+#sd.on{opacity:1!important;pointer-events:auto!important;visibility:visible!important}
 #sd.scrolled-away{opacity:0!important;pointer-events:none!important;visibility:hidden!important}
+
+/* FINAL SCROLL CUE FIX: hidden while the opening gate is locked; visible once it opens;
+   permanently hidden after the first user scroll or click. */
+#sd {
+  display: block !important;
+  position: fixed !important;
+  left: 50% !important;
+  bottom: 18px !important;
+  transform: translateX(-50%) !important;
+  z-index: 999999 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transition: opacity .25s ease !important;
+}
+body.locked #sd {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+#sd.scrolled-away {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
 
 </style>
 </head>
@@ -699,13 +714,36 @@ body.entered .top .in1{animation:land 1.8s cubic-bezier(.2,.7,.2,1) both}
     b.style.cssText='left:'+(bi*210+p[0])+'px;top:'+p[1]+'px;animation-delay:'+((bi*4+j)*.13).toFixed(2)+'s'+(Math.random()<.15?';animation-duration:'+(1.3+Math.random()*.6).toFixed(2)+'s':'');jin.appendChild(b)});
   jr.addEventListener('scroll',function(){cnt.textContent=Math.min(10,Math.round(jr.scrollLeft/210)+1)+' / 10'},{passive:true});
   if(window.IntersectionObserver&&!still)new IntersectionObserver(function(e,o){if(e[0].isIntersecting){o.disconnect();setTimeout(function(){jr.scrollTo({left:120,behavior:'smooth'});setTimeout(function(){jr.scrollTo({left:0,behavior:'smooth'})},900)},500)}},{threshold:.6}).observe(jr);
-  // Scroll cue and progress bar
-  var pb=document.getElementById('pb'),sd=document.getElementById('sd'),cueDismissed=false;
-  function hideCue(){cueDismissed=true;sd.classList.add('scrolled-away');sd.classList.remove('on');sd.style.opacity='0';sd.style.pointerEvents='none';}
-  function prog(){var h=document.documentElement.scrollHeight-innerHeight;pb.style.width=(h>0?scrollY/h*100:0)+'%';if(scrollY>10)hideCue();}
+  // Scroll cue: shown once the opening gate is gone; dismissed permanently on scroll/click.
+  var pb=document.getElementById('pb'),scrollCue=document.getElementById('sd'),cueDismissed=false,cueArmed=false;
+  function hideCue(){
+    cueDismissed=true;
+    scrollCue.classList.remove('on');
+    scrollCue.classList.add('scrolled-away');
+    scrollCue.style.setProperty('opacity','0','important');
+    scrollCue.style.setProperty('visibility','hidden','important');
+    scrollCue.style.setProperty('pointer-events','none','important');
+  }
+  function prog(){
+    var h=document.documentElement.scrollHeight-innerHeight;
+    pb.style.width=(h>0?window.scrollY/h*100:0)+'%';
+    if(cueArmed && !cueDismissed && window.scrollY>12) hideCue();
+  }
   addEventListener('scroll',prog,{passive:true});
-  function armCue(){if(!cueDismissed){sd.classList.add('on');sd.classList.remove('scrolled-away');sd.style.opacity='1';sd.style.pointerEvents='auto';}prog()}
-  sd.addEventListener('click',function(){hideCue();window.scrollBy({top:Math.max(360,innerHeight*.78),behavior:'smooth'})});
+  function armCue(){
+    cueArmed=true;
+    if(cueDismissed) return;
+    scrollCue.classList.remove('scrolled-away');
+    scrollCue.classList.add('on');
+    scrollCue.style.setProperty('display','block','important');
+    scrollCue.style.setProperty('opacity','1','important');
+    scrollCue.style.setProperty('visibility','visible','important');
+    scrollCue.style.setProperty('pointer-events','auto','important');
+  }
+  scrollCue.addEventListener('click',function(){
+    hideCue();
+    window.scrollTo({top:Math.max(window.scrollY+Math.round(window.innerHeight*.78),120),behavior:still?'auto':'smooth'});
+  });
   // Diya timeline: the thread fills and the lamps light as you scroll
   var tl=document.getElementById('tl'),thr=document.getElementById('thr'),its=[].slice.call(tl.querySelectorAll('.it'));
   function tlp(){var r=tl.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.62-r.top)/r.height));thr.style.height=(p*100)+'%';
