@@ -7,6 +7,7 @@
 <meta name="description" content="Padharo mhare des. Saket weds Chanchal, 2nd and 3rd December 2026, Garh Panchkot, West Bengal.">
 <meta name="theme-color" content="#0f6b68">
 <script>document.documentElement.className='js'</script>
+<link rel="preload" as="image" href="palace-gate.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Tiro+Devanagari+Hindi&family=Jost:wght@400;500&display=swap" rel="stylesheet">
@@ -503,7 +504,7 @@ h1,h2,h3{font-weight:600;letter-spacing:.02em}
 
 /* Palace gate: the entrance scene (real picture) */
 body.locked{overflow:hidden}
-#gate{--h:100vh;position:fixed;inset:0;z-index:50;overflow:hidden;transition:opacity .9s ease}
+#gate{--h:100vh;position:fixed;inset:0;z-index:50;overflow:hidden;transition:opacity .9s ease;background:linear-gradient(145deg,#f8d9d7,#f6e6ce 52%,#d6a75c)}
 @supports (height:100dvh){#gate{--h:100dvh}}
 #gate::before,#gate::after{content:"";position:absolute;top:0;bottom:0;z-index:0;width:max(0px,calc(50% - var(--h)*.2814 + 54px));background:url(palace-gate.jpg) center/cover;filter:blur(14px) brightness(.7)}
 #gate::before{left:-30px}#gate::after{right:-30px}
@@ -511,7 +512,7 @@ body.locked{overflow:hidden}
 #gate.gone{display:none}
 #scene{position:absolute;inset:0;z-index:1;display:grid;place-items:center;transition:transform 2.2s cubic-bezier(.65,0,.85,.45)}
 #gate.zoom #scene{transform:scale(var(--z,8))}
-.stage{position:relative;height:var(--h);width:calc(var(--h)*.5628);container-type:inline-size;box-shadow:0 0 40px #000a}
+.stage{position:relative;height:min(var(--h),177.68vw);width:min(100vw,calc(var(--h)*.5628));aspect-ratio:9/16;container-type:inline-size;box-shadow:0 0 40px #000a;background:#f7e4d2}
 .pic{position:absolute;inset:0;background:url(palace-gate.jpg) center/100% 100%;clip-path:polygon(evenodd,0 0,100% 0,100% 100%,0 100%,36.86% 75.68%,36.86% 52.74%,37.07% 50.64%,38.95% 47.68%,40.57% 46.43%,42.61% 45.60%,44.81% 45.00%,47.32% 44.52%,48.78% 44.17%,50.10% 43.82%,51.43% 44.17%,52.89% 44.52%,55.40% 45.00%,57.60% 45.60%,59.64% 46.43%,61.26% 47.68%,63.14% 50.64%,63.35% 52.74%,63.35% 75.68%,63.35% 75.68%,36.86% 75.68%,0 100%)}
 .glow{position:absolute;left:36.66%;width:26.89%;top:43.66%;bottom:24.16%;animation:beat 2.4s infinite}
 .gateway{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;appearance:none;-webkit-appearance:none;cursor:pointer;perspective:900px;overflow:hidden;
@@ -764,6 +765,69 @@ body.locked #sd {
   .pw .sc b { font-size: clamp(35px, 17.5cqw, 54px) !important; }
 }
 
+
+/* Responsive/performance hardening — preserves the established visual design. */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+img, svg, canvas, video {
+  max-width: 100%;
+}
+section, .wrap, .evs, .ec, .evw {
+  min-width: 0;
+}
+.wrap {
+  width: 100%;
+}
+.pair {
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.pcard {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.info {
+  width: fit-content;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.info span {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+.ev .card, .evw, .ec {
+  max-width: 100%;
+}
+.evimg {
+  height: auto;
+  object-fit: contain;
+}
+@media (max-width: 420px) {
+  .wrap { padding-left: 1rem; padding-right: 1rem; }
+  .evs { padding-left: 10px; padding-right: 10px; }
+  .ec { padding-left: .8rem; padding-right: .8rem; }
+  .info span {
+    padding: .55rem .45rem;
+    font-size: clamp(.58rem, 2.7vw, .72rem);
+    letter-spacing: .08em;
+  }
+  .pair { gap: .7rem; }
+  .pcard { padding-left: .45rem; padding-right: .45rem; }
+}
+@media (max-width: 340px) {
+  .pair { grid-template-columns: 1fr; max-width: 260px; }
+  .amp { top: 50%; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  #gate::before, #gate::after { display: none; }
+  .caption { height: 18%; }
+}
+
 </style>
 </head>
 <body class="locked">
@@ -780,7 +844,7 @@ body.locked #sd {
 
 <main>
 <section class="top"><div class="toran"></div><div class="in1">
-  <img class="ganesh" src="ganesh.png" alt="Lord Ganesha">
+  <img class="ganesh" src="ganesh.png" alt="Lord Ganesha" decoding="async" loading="eager" fetchpriority="high">
   <p class="shloka">॥ श्री गणेशाय नमः ॥</p>
   <p class="welcome">With joyful hearts, we welcome you to the celebration of a lifetime.</p>
   <div class="ac nm"><h1 class="names">Saket<i>&amp;</i>Chanchal</h1><p class="hash">#SangChal</p></div>
@@ -850,7 +914,7 @@ body.locked #sd {
   <button class="linkbtn" id="revealBtn" type="button">Or tap here to reveal</button>
 </div></section>
 
-<section class="jy"><div class="wrap rv"><h2 class="sec-h">Our Journey</h2><p class="swp">Swipe right <span>→</span> to see our journey</p></div><div class="jr"><div class="jin"><figure class="ph" style="--r:2.5deg"><i class="clip"></i><div class="pic2"><span>1</span><img src="journey-1.jpg" alt="Saket and Chanchal, photo 1" loading="lazy" onerror="this.remove()"></div></figure><figure class="ph" style="--r:-2.5deg"><i class="clip"></i><div class="pic2"><span>2</span><img src="journey-2.jpg" alt="Saket and Chanchal, photo 2" loading="lazy" onerror="this.remove()"></div></figure><figure class="ph" style="--r:2.5deg"><i class="clip"></i><div class="pic2"><span>3</span><img src="journey-3.jpg" alt="Saket and Chanchal, photo 3" loading="lazy" onerror="this.remove()"></div></figure><figure class="ph" style="--r:-2.5deg"><i class="clip"></i><div class="pic2"><span>4</span><img src="journey-4.jpg" alt="Saket and Chanchal, photo 4" loading="lazy" onerror="this.remove()"></div></figure><figure class="ph" style="--r:2.5deg"><i class="clip"></i><div class="pic2"><span>5</span><img src="journey-5.jpg" alt="Saket and Chanchal, photo 5" loading="lazy" onerror="this.remove()"></div></figure><figure class="ph" style="--r:-2.5deg"><i class="clip"></i><div class="pic2"><span>6</span><img src="journey-6.jpg" alt="Saket and Chanchal, photo 6" loading="lazy" onerror="this.remove()"></div></figure><figure class="ph" style="--r:2.5deg"><i class="clip"></i><div class="pic2"><span>7</span><img src="journey-7.jpg" alt="Saket and Chanchal, photo 7" loading="lazy" onerror="this.remove()"></div></figure><figure class="ph" style="--r:-2.5deg"><i class="clip"></i><div class="pic2"><span>8</span><img src="journey-8.jpg" alt="Saket and Chanchal, photo 8" loading="lazy" onerror="this.remove()"></div></figure><figure class="ph" style="--r:2.5deg"><i class="clip"></i><div class="pic2"><span>9</span><img src="journey-9.jpg" alt="Saket and Chanchal, photo 9" loading="lazy" onerror="this.remove()"></div></figure><figure class="ph" style="--r:-2.5deg"><i class="clip"></i><div class="pic2"><span>10</span><img src="journey-10.jpg" alt="Saket and Chanchal, photo 10" loading="lazy" onerror="this.remove()"></div></figure></div></div><p class="cnt" id="cnt">1 / 10</p></section>
+<section class="jy"><div class="wrap rv"><h2 class="sec-h">Our Journey</h2><p class="swp">Swipe right <span>→</span> to see our journey</p></div><div class="jr"><div class="jin"><figure class="ph" style="--r:2.5deg"><i class="clip"></i><div class="pic2"><span>1</span><img src="journey-1.jpg" alt="Saket and Chanchal, photo 1" loading="lazy" onerror="this.remove()" decoding="async"></div></figure><figure class="ph" style="--r:-2.5deg"><i class="clip"></i><div class="pic2"><span>2</span><img src="journey-2.jpg" alt="Saket and Chanchal, photo 2" loading="lazy" onerror="this.remove()" decoding="async"></div></figure><figure class="ph" style="--r:2.5deg"><i class="clip"></i><div class="pic2"><span>3</span><img src="journey-3.jpg" alt="Saket and Chanchal, photo 3" loading="lazy" onerror="this.remove()" decoding="async"></div></figure><figure class="ph" style="--r:-2.5deg"><i class="clip"></i><div class="pic2"><span>4</span><img src="journey-4.jpg" alt="Saket and Chanchal, photo 4" loading="lazy" onerror="this.remove()" decoding="async"></div></figure><figure class="ph" style="--r:2.5deg"><i class="clip"></i><div class="pic2"><span>5</span><img src="journey-5.jpg" alt="Saket and Chanchal, photo 5" loading="lazy" onerror="this.remove()" decoding="async"></div></figure><figure class="ph" style="--r:-2.5deg"><i class="clip"></i><div class="pic2"><span>6</span><img src="journey-6.jpg" alt="Saket and Chanchal, photo 6" loading="lazy" onerror="this.remove()" decoding="async"></div></figure><figure class="ph" style="--r:2.5deg"><i class="clip"></i><div class="pic2"><span>7</span><img src="journey-7.jpg" alt="Saket and Chanchal, photo 7" loading="lazy" onerror="this.remove()" decoding="async"></div></figure><figure class="ph" style="--r:-2.5deg"><i class="clip"></i><div class="pic2"><span>8</span><img src="journey-8.jpg" alt="Saket and Chanchal, photo 8" loading="lazy" onerror="this.remove()" decoding="async"></div></figure><figure class="ph" style="--r:2.5deg"><i class="clip"></i><div class="pic2"><span>9</span><img src="journey-9.jpg" alt="Saket and Chanchal, photo 9" loading="lazy" onerror="this.remove()" decoding="async"></div></figure><figure class="ph" style="--r:-2.5deg"><i class="clip"></i><div class="pic2"><span>10</span><img src="journey-10.jpg" alt="Saket and Chanchal, photo 10" loading="lazy" onerror="this.remove()" decoding="async"></div></figure></div></div><p class="cnt" id="cnt">1 / 10</p></section>
 <section class="count"><div class="wrap rv">
   <p class="kick">Counting down to the wedding day</p>
   <div class="cds" id="cds"><div class="cr"><svg viewBox="0 0 84 84"><circle class="tk" cx="42" cy="42" r="38"/><circle class="pg" cx="42" cy="42" r="38"/></svg><div class="ci"><b>–</b><span>Days</span></div></div><div class="cr"><svg viewBox="0 0 84 84"><circle class="tk" cx="42" cy="42" r="38"/><circle class="pg" cx="42" cy="42" r="38"/></svg><div class="ci"><b>–</b><span>Hours</span></div></div><div class="cr"><svg viewBox="0 0 84 84"><circle class="tk" cx="42" cy="42" r="38"/><circle class="pg" cx="42" cy="42" r="38"/></svg><div class="ci"><b>–</b><span>Minutes</span></div></div><div class="cr"><svg viewBox="0 0 84 84"><circle class="tk" cx="42" cy="42" r="38"/><circle class="pg" cx="42" cy="42" r="38"/></svg><div class="ci"><b>–</b><span>Seconds</span></div></div></div>
@@ -858,11 +922,11 @@ body.locked #sd {
 </div></section>
 
 <div class="evh"><div class="toran"></div><div class="wrap rv" style="padding-top:1.8rem"><p class="kick">Four celebrations</p><h2 class="sec-h">The Festivities</h2></div></div>
-<section class="evs"><article class="ec myraah rv"><i class="rg"></i><img class="evimg" src="myraah.webp" alt="Illustration of the Myraah ceremony" width="900" height="1200" loading="lazy"><h2 class="evt">Myraah</h2><div class="info"><span>Wednesday</span><span>2 Dec</span><span>1:00 – 3:00 PM</span></div><p class="pl2">Outside Big Banquet Hall</p><p class="pl3">Garh Panchkot Eco Tourism II</p><div class="evb"><a class="bt" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></svg>Directions</a><a class="bt o" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Myraah%20%C2%B7%20Saket%20%26%20Chanchal&amp;dates=20261202T130000%2F20261202T150000&amp;ctz=Asia%2FKolkata&amp;location=Outside%20Big%20Banquet%20Hall%2C%20Garh%20Panchkot%20Eco%20Tourism%20II%2C%20West%20Bengal&amp;details=Outside%20Big%20Banquet%20Hall%20%C2%B7%20Garh%20Panchkot%20Eco%20Tourism%20II.%20Map%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FKrnKas9SCxRmQqh58%20%23SangChal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Add to calendar</a></div></article><article class="ec sangeet rv"><i class="rg"></i><img class="evimg" src="sangeet.webp" alt="Illustration of the Sangeet" width="900" height="1200" loading="lazy"><h2 class="evt">Sangeet</h2><div class="info"><span>Wednesday</span><span>2 Dec</span><span>6:00 – 11:00 PM</span></div><p class="pl2">Big Lawn</p><p class="pl3">Garh Panchkot Eco Tourism II</p><div class="evb"><a class="bt" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></svg>Directions</a><a class="bt o" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Sangeet%20%C2%B7%20Saket%20%26%20Chanchal&amp;dates=20261202T180000%2F20261202T230000&amp;ctz=Asia%2FKolkata&amp;location=Big%20Lawn%2C%20Garh%20Panchkot%20Eco%20Tourism%20II%2C%20West%20Bengal&amp;details=Big%20Lawn%20%C2%B7%20Garh%20Panchkot%20Eco%20Tourism%20II.%20Map%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FKrnKas9SCxRmQqh58%20%23SangChal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Add to calendar</a></div></article><article class="ec carnival rv"><i class="rg"></i><img class="evimg" src="carnival.webp" alt="Illustration of the Carnival morning" width="900" height="1200" loading="lazy"><h2 class="evt">Carnival</h2><div class="info"><span>Thursday</span><span>3 Dec</span><span>10:00 AM – 1:00 PM</span></div><p class="pl2">Pool side area</p><p class="pl3">Garh Panchkot Eco Tourism II</p><div class="evb"><a class="bt" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></svg>Directions</a><a class="bt o" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Carnival%20%C2%B7%20Saket%20%26%20Chanchal&amp;dates=20261203T100000%2F20261203T130000&amp;ctz=Asia%2FKolkata&amp;location=Pool%20side%20area%2C%20Garh%20Panchkot%20Eco%20Tourism%20II%2C%20West%20Bengal&amp;details=Pool%20side%20area%20%C2%B7%20Garh%20Panchkot%20Eco%20Tourism%20II.%20Map%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FKrnKas9SCxRmQqh58%20%23SangChal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Add to calendar</a></div></article><article class="ec wedding rv"><i class="rg"></i><img class="evimg" src="wedding.webp" alt="Illustration of the wedding" width="900" height="1200" loading="lazy"><h2 class="evt">The Wedding</h2><div class="info"><span>Thursday</span><span>3 Dec</span><span>7:00 – 11:00 PM</span></div><p class="pl2">Big Lawn</p><p class="pl3">Garh Panchkot Eco Tourism II</p><div class="evb"><a class="bt" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></svg>Directions</a><a class="bt o" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=The%20Wedding%20%C2%B7%20Saket%20%26%20Chanchal&amp;dates=20261203T190000%2F20261203T230000&amp;ctz=Asia%2FKolkata&amp;location=Big%20Lawn%2C%20Garh%20Panchkot%20Eco%20Tourism%20II%2C%20West%20Bengal&amp;details=Big%20Lawn%20%C2%B7%20Garh%20Panchkot%20Eco%20Tourism%20II.%20Map%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FKrnKas9SCxRmQqh58%20%23SangChal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Add to calendar</a></div></article></section>
+<section class="evs"><article class="ec myraah rv"><i class="rg"></i><img class="evimg" src="myraah.webp" alt="Illustration of the Myraah ceremony" width="900" height="1200" loading="lazy" decoding="async"><h2 class="evt">Myraah</h2><div class="info"><span>Wednesday</span><span>2 Dec</span><span>1:00 – 3:00 PM</span></div><p class="pl2">Outside Big Banquet Hall</p><p class="pl3">Garh Panchkot Eco Tourism II</p><div class="evb"><a class="bt" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></svg>Directions</a><a class="bt o" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Myraah%20%C2%B7%20Saket%20%26%20Chanchal&amp;dates=20261202T130000%2F20261202T150000&amp;ctz=Asia%2FKolkata&amp;location=Outside%20Big%20Banquet%20Hall%2C%20Garh%20Panchkot%20Eco%20Tourism%20II%2C%20West%20Bengal&amp;details=Outside%20Big%20Banquet%20Hall%20%C2%B7%20Garh%20Panchkot%20Eco%20Tourism%20II.%20Map%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FKrnKas9SCxRmQqh58%20%23SangChal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Add to calendar</a></div></article><article class="ec sangeet rv"><i class="rg"></i><img class="evimg" src="sangeet.webp" alt="Illustration of the Sangeet" width="900" height="1200" loading="lazy" decoding="async"><h2 class="evt">Sangeet</h2><div class="info"><span>Wednesday</span><span>2 Dec</span><span>6:00 – 11:00 PM</span></div><p class="pl2">Big Lawn</p><p class="pl3">Garh Panchkot Eco Tourism II</p><div class="evb"><a class="bt" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></svg>Directions</a><a class="bt o" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Sangeet%20%C2%B7%20Saket%20%26%20Chanchal&amp;dates=20261202T180000%2F20261202T230000&amp;ctz=Asia%2FKolkata&amp;location=Big%20Lawn%2C%20Garh%20Panchkot%20Eco%20Tourism%20II%2C%20West%20Bengal&amp;details=Big%20Lawn%20%C2%B7%20Garh%20Panchkot%20Eco%20Tourism%20II.%20Map%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FKrnKas9SCxRmQqh58%20%23SangChal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Add to calendar</a></div></article><article class="ec carnival rv"><i class="rg"></i><img class="evimg" src="carnival.webp" alt="Illustration of the Carnival morning" width="900" height="1200" loading="lazy" decoding="async"><h2 class="evt">Carnival</h2><div class="info"><span>Thursday</span><span>3 Dec</span><span>10:00 AM – 1:00 PM</span></div><p class="pl2">Pool side area</p><p class="pl3">Garh Panchkot Eco Tourism II</p><div class="evb"><a class="bt" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></svg>Directions</a><a class="bt o" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Carnival%20%C2%B7%20Saket%20%26%20Chanchal&amp;dates=20261203T100000%2F20261203T130000&amp;ctz=Asia%2FKolkata&amp;location=Pool%20side%20area%2C%20Garh%20Panchkot%20Eco%20Tourism%20II%2C%20West%20Bengal&amp;details=Pool%20side%20area%20%C2%B7%20Garh%20Panchkot%20Eco%20Tourism%20II.%20Map%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FKrnKas9SCxRmQqh58%20%23SangChal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Add to calendar</a></div></article><article class="ec wedding rv"><i class="rg"></i><img class="evimg" src="wedding.webp" alt="Illustration of the wedding" width="900" height="1200" loading="lazy" decoding="async"><h2 class="evt">The Wedding</h2><div class="info"><span>Thursday</span><span>3 Dec</span><span>7:00 – 11:00 PM</span></div><p class="pl2">Big Lawn</p><p class="pl3">Garh Panchkot Eco Tourism II</p><div class="evb"><a class="bt" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></svg>Directions</a><a class="bt o" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=The%20Wedding%20%C2%B7%20Saket%20%26%20Chanchal&amp;dates=20261203T190000%2F20261203T230000&amp;ctz=Asia%2FKolkata&amp;location=Big%20Lawn%2C%20Garh%20Panchkot%20Eco%20Tourism%20II%2C%20West%20Bengal&amp;details=Big%20Lawn%20%C2%B7%20Garh%20Panchkot%20Eco%20Tourism%20II.%20Map%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FKrnKas9SCxRmQqh58%20%23SangChal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Add to calendar</a></div></article></section>
 <section class="gl2"><div class="wrap rv"><p class="kick">Plan your two days</p><h2 class="sec-h">At a Glance</h2></div><div class="tl" id="tl"><i class="thread"><b id="thr"></b></i><div class="dayb">Wednesday, 2 December</div><div class="it l"><span class="dy"><svg class="dya" viewBox="0 0 44 44" aria-hidden="true"><path class="fl" d="M22 4c5 6 6 10 0 15-6-5-5-9 0-15z"/><path d="M6 24c0 8 7 14 16 14s16-6 16-14z" fill="#b9652a" stroke="#8a4a1e" stroke-width="1.5"/><ellipse cx="22" cy="24" rx="16" ry="3.5" fill="#6b3414"/></svg></span><div class="tx"><small><i class="sun"></i>1:00 – 3:00 PM</small><b>Myraah</b><em>Outside Big Banquet Hall</em><u>Garh Panchkot Eco Tourism II</u></div></div><div class="it r"><span class="dy"><svg class="dya" viewBox="0 0 44 44" aria-hidden="true"><path class="fl" d="M22 4c5 6 6 10 0 15-6-5-5-9 0-15z"/><path d="M6 24c0 8 7 14 16 14s16-6 16-14z" fill="#b9652a" stroke="#8a4a1e" stroke-width="1.5"/><ellipse cx="22" cy="24" rx="16" ry="3.5" fill="#6b3414"/></svg></span><div class="tx"><small><i class="moon"></i>6:00 – 11:00 PM</small><b>Sangeet</b><em>Big Lawn</em><u>Garh Panchkot Eco Tourism II</u></div></div><div class="dayb">Thursday, 3 December</div><div class="it l"><span class="dy"><svg class="dya" viewBox="0 0 44 44" aria-hidden="true"><path class="fl" d="M22 4c5 6 6 10 0 15-6-5-5-9 0-15z"/><path d="M6 24c0 8 7 14 16 14s16-6 16-14z" fill="#b9652a" stroke="#8a4a1e" stroke-width="1.5"/><ellipse cx="22" cy="24" rx="16" ry="3.5" fill="#6b3414"/></svg></span><div class="tx"><small><i class="sun"></i>10:00 AM – 1:00 PM</small><b>Carnival</b><em>Pool side area</em><u>Garh Panchkot Eco Tourism II</u></div></div><div class="it r"><span class="dy"><svg class="dya" viewBox="0 0 44 44" aria-hidden="true"><path class="fl" d="M22 4c5 6 6 10 0 15-6-5-5-9 0-15z"/><path d="M6 24c0 8 7 14 16 14s16-6 16-14z" fill="#b9652a" stroke="#8a4a1e" stroke-width="1.5"/><ellipse cx="22" cy="24" rx="16" ry="3.5" fill="#6b3414"/></svg></span><div class="tx"><small><i class="moon"></i>7:00 – 11:00 PM</small><b>The Wedding</b><em>Big Lawn</em><u>Garh Panchkot Eco Tourism II</u></div></div><div class="it fin"><span class="dy"><svg class="dya" viewBox="0 0 44 44" aria-hidden="true"><path class="fl" d="M22 4c5 6 6 10 0 15-6-5-5-9 0-15z"/><path d="M6 24c0 8 7 14 16 14s16-6 16-14z" fill="#b9652a" stroke="#8a4a1e" stroke-width="1.5"/><ellipse cx="22" cy="24" rx="16" ry="3.5" fill="#6b3414"/></svg></span><div class="tx"><b>The celebration begins</b></div></div></div></section>
 <section class="mp"><div class="wrap rv"><p class="kick">Find us</p><h2 class="sec-h">The Venue</h2><div class="mapbox"><iframe title="Map of Garh Panchkot Eco Tourism II" src="https://www.google.com/maps?q=Garh+Panchkot+Eco+Tourism+II+Puapur+West+Bengal&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div><p class="pl2">Garh Panchkot Eco Tourism II</p><p class="ad">Garpanchkot, Puapur, West Bengal 723121</p><a class="bt" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.2A7 7 0 0 1 19 9.8C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></svg>Directions</a></div></section>
 
-<section class="bs"><div class="toran"></div><div class="bstage" id="bstage"><div class="pend" id="pend"><img class="bell" src="bell-s.webp" alt="" width="54" height="78"></div><div class="nm2"><div class="ln1"><span class="tt">SAKET</span><span class="tt">CHANCHAL</span><span class="tt">#SANGCHAL</span></div></div></div></section>
+<section class="bs"><div class="toran"></div><div class="bstage" id="bstage"><div class="pend" id="pend"><img class="bell" src="bell-s.webp" alt="" width="54" height="78" decoding="async"></div><div class="nm2"><div class="ln1"><span class="tt">SAKET</span><span class="tt">CHANCHAL</span><span class="tt">#SANGCHAL</span></div></div></div></section>
 <section class="end"><div class="toran"></div><div class="wrap rv">
   <p class="love">With Love,</p><h2>Agarwal and Gupta Family</h2>
   <p class="hash">#SangChal</p>
