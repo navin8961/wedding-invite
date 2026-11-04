@@ -928,16 +928,44 @@ section, .wrap, .evs, .ec, .evw {
 }
 
 
-/* First-arch name: replace only the capital S glyph with a clean, elegant serif initial. */
-.nm .names .s-initial {
-  display: inline-block;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.04em;
-  line-height: .82;
-  letter-spacing: -.07em;
-  vertical-align: -.015em;
+/* First arch: clear, premium serif wordmark for both names. */
+.nm .names {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: .055em !important;
+  width: 100%;
+  font-family: 'Cinzel', 'Times New Roman', Georgia, serif !important;
+  font-size: clamp(1.8rem, 13cqw, 3.45rem) !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  text-transform: uppercase !important;
+  letter-spacing: .035em !important;
+  line-height: .98 !important;
+  color: #76212b !important;
+  white-space: nowrap;
+}
+.nm .names .name-word {
+  display: block;
+  font-family: 'Cinzel', 'Times New Roman', Georgia, serif !important;
+  font-size: 1em !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  letter-spacing: .035em !important;
+  line-height: .98 !important;
+  color: #76212b !important;
+}
+.nm .names i {
+  display: block !important;
+  margin: 0 !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: .62em !important;
+  font-weight: 600 !important;
+  font-style: italic !important;
+  letter-spacing: 0 !important;
+  line-height: .72 !important;
+  color: #b98521 !important;
 }
 
 /* Event date strips: preserve the original transparent, single-row layout.
@@ -973,7 +1001,7 @@ section, .wrap, .evs, .ec, .evw {
   <img class="ganesh" src="ganesh.png" alt="Lord Ganesha" decoding="async" loading="eager" fetchpriority="high">
   <p class="shloka">॥ श्री गणेशाय नमः ॥</p>
   <p class="welcome">With joyful hearts, we welcome you to the celebration of a lifetime.</p>
-  <div class="ac nm"><h1 class="names"><span class="s-initial">S</span>aket<i>&amp;</i>Chanchal</h1><p class="hash">#SangChal</p></div>
+  <div class="ac nm"><h1 class="names"><span class="name-word">SAKET</span><i>&amp;</i><span class="name-word">CHANCHAL</span></h1><p class="hash">#SangChal</p></div>
   <p class="bless hi" lang="hi"><span>स्नेह और प्यार से देते हैं बुलावा,</span><span>आओ, खुशियों का उत्सव मनावा।</span><span>परिवार का आशीष, अपनों का दुलार,</span><span>पधारिए, आपका है इंतज़ार।</span></p>
   <a class="place" href="https://maps.app.goo.gl/KrnKas9SCxRmQqh58" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Garh Panchkot Unit II, West Bengal</a>
 </div></section>
