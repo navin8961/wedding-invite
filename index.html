@@ -582,6 +582,188 @@ body.locked #sd {
   pointer-events: none !important;
 }
 
+
+/* Only the two requested finishing touches: scratch-card supporting text and footer credit. */
+.scratch small{font-size:.95rem}
+.scratch span{font-size:1.6rem}
+.end .navin-credit{position:absolute;left:0;right:0;bottom:.85rem;margin:0;text-align:center;font-family:var(--sans);font-size:.76rem;letter-spacing:.12em;color:rgba(255,247,234,.48);opacity:1;pointer-events:none}
+.end .navin-credit .credit-heart{color:rgba(220,62,77,.82);font-size:1em;vertical-align:baseline}
+/* Save-the-date arch: balanced, editorial typography. */
+.pw .sc {
+  padding: 0 6% !important;
+  justify-content: center !important;
+}
+.pw .sc > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.pw .sc small {
+  display: block;
+  margin: 0 0 .5rem;
+  font-family: var(--disp);
+  font-size: clamp(11px, 3.8cqw, 12px) !important;
+  line-height: 1.35;
+  letter-spacing: .14em;
+  color: #a16d20;
+  white-space: nowrap;
+}
+.pw .sc small::before,
+.pw .sc small::after {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 1px;
+  margin: 0 7px .28em;
+  vertical-align: middle;
+  background: linear-gradient(90deg, transparent, #c99a49);
+}
+.pw .sc small::after {
+  background: linear-gradient(90deg, #c99a49, transparent);
+}
+.pw .sc b {
+  display: block;
+  margin: 0;
+  font-family: var(--script);
+  font-size: clamp(42px, 20.5cqw, 53px) !important;
+  line-height: .98 !important;
+  letter-spacing: 0;
+  color: #0f6b68;
+}
+.pw .sc b::after {
+  content: "◆";
+  display: block;
+  width: 68px;
+  height: 10px;
+  margin: .36rem auto .28rem;
+  font-family: var(--disp);
+  font-size: 7px;
+  font-weight: 400;
+  line-height: 10px;
+  text-align: center;
+  color: #c6953d;
+  background: linear-gradient(90deg, transparent, #d5ad68 24%, #d5ad68 76%, transparent) center / 100% 1px no-repeat;
+}
+.pw .sc span {
+  display: block;
+  margin: 0;
+  font-family: var(--body);
+  font-size: clamp(17px, 7.8cqw, 19px) !important;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: .035em;
+  color: #946315;
+}
+
+/* Scratch-card arch content matched to the supplied reference image. */
+.pw .sc {
+  display: block !important;
+  overflow: hidden;
+  container-type: inline-size;
+  padding: 0 !important;
+  background: #fff8e9 !important;
+  border: 3px solid #d9a53c !important;
+  border-radius: 44% 44% 7% 7% / 32% 32% 4% 4% !important;
+  box-shadow: inset 0 0 0 3px #fffdf7, inset 0 0 0 5px #d9a53c, 0 7px 18px #8f612522 !important;
+}
+.pw .sc > .scratch-composition {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 7% 7% 7%;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 0;
+}
+.pw .sc .scratch-lotus {
+  display: block;
+  width: 40%;
+  height: auto;
+  margin: 0 auto 4%;
+  flex: 0 0 auto;
+}
+.pw .sc small {
+  display: block;
+  margin: 0 0 3%;
+  font-family: var(--disp);
+  font-size: clamp(9px, 3.2cqw, 12px) !important;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: .12em;
+  color: #87601c;
+  white-space: nowrap;
+}
+.pw .sc small::before,
+.pw .sc small::after { content: none !important; }
+.pw .sc b {
+  display: block;
+  margin: 0;
+  font-family: var(--script);
+  font-size: clamp(39px, 18cqw, 61px) !important;
+  font-weight: 400;
+  line-height: .98 !important;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: #075f5a;
+}
+.pw .sc b::after { content: none !important; }
+.pw .sc .scratch-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 74%;
+  margin: 3.5% auto 2%;
+  color: #bd8a27;
+  line-height: 1;
+}
+.pw .sc .scratch-divider i {
+  display: block;
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, #c99a49);
+}
+.pw .sc .scratch-divider i:last-child {
+  background: linear-gradient(90deg, #c99a49, transparent);
+}
+.pw .sc .scratch-divider em {
+  font-style: normal;
+  font-size: 10px;
+}
+.pw .sc .scratch-month {
+  display: block;
+  margin: 0;
+  font-family: var(--disp);
+  font-size: clamp(15px, 6.6cqw, 22px) !important;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: .01em;
+  color: #946315;
+  white-space: nowrap;
+}
+.pw .sc .scratch-florals {
+  display: block;
+  width: 82%;
+  height: auto;
+  margin: 5% auto 0;
+  flex: 0 0 auto;
+}
+.pw .sc canvas {
+  z-index: 2;
+}
+@media (max-width: 390px) {
+  .pw .sc .scratch-lotus { margin-bottom: 4%; }
+  .pw .sc small { letter-spacing: .08em; }
+  .pw .sc b { font-size: clamp(35px, 17.5cqw, 54px) !important; }
+}
+
 </style>
 </head>
 <body class="locked">
@@ -614,7 +796,57 @@ body.locked #sd {
 
 <section class="save"><div class="wrap rv">
   <p class="kick">Mark your calendar</p><h2 class="sec-h">Save the Date</h2><p class="sub">Scratch the golden card to reveal</p>
-  <div class="pw" id="pw"><i class="cur l"></i><i class="cur r"></i><div class="ac sc" id="scratch"><div><small>Wednesday &amp; Thursday</small><b>2nd &amp; 3rd</b><span>December 2026</span></div><canvas id="foil" aria-hidden="true"></canvas></div></div>
+  <div class="pw" id="pw"><i class="cur l"></i><i class="cur r"></i><div class="ac sc" id="scratch">
+    <div class="scratch-composition">
+      <svg class="scratch-lotus" viewBox="0 0 180 48" aria-hidden="true">
+        <g fill="none" stroke="#b98521" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 34 Q36 14 60 31 Q76 39 90 34 Q104 39 120 31 Q144 14 168 34"/>
+          <path d="M90 34 C78 25 76 13 90 3 C104 13 102 25 90 34Z"/>
+          <path d="M86 32 C69 27 62 17 65 10 C78 12 86 21 90 34"/>
+          <path d="M94 32 C111 27 118 17 115 10 C102 12 94 21 90 34"/>
+          <path d="M90 34 C73 35 60 31 52 25 C65 20 78 25 90 34Z"/>
+          <path d="M90 34 C107 35 120 31 128 25 C115 20 102 25 90 34Z"/>
+        </g>
+      </svg>
+      <small>Wednesday &amp; Thursday</small>
+      <b>2nd &amp; 3rd</b>
+      <span class="scratch-divider" aria-hidden="true"><i></i><em>◆</em><i></i></span>
+      <span class="scratch-month">December 2026</span>
+      <svg class="scratch-florals" viewBox="0 0 300 62" aria-hidden="true">
+        <g fill="none" stroke="#8b8b48" stroke-width="1.4" stroke-linecap="round">
+          <path d="M8 50 Q48 20 91 43 Q123 57 150 39 Q177 57 209 43 Q252 20 292 50"/>
+          <path d="M26 43 Q20 28 12 26 M43 36 Q42 22 34 17 M63 35 Q66 21 59 13 M86 43 Q94 28 88 20"/>
+          <path d="M274 43 Q280 28 288 26 M257 36 Q258 22 266 17 M237 35 Q234 21 241 13 M214 43 Q206 28 212 20"/>
+        </g>
+        <g fill="#8b9360" stroke="#7a824a" stroke-width=".6">
+          <ellipse cx="19" cy="30" rx="5" ry="10" transform="rotate(-35 19 30)"/>
+          <ellipse cx="38" cy="23" rx="5" ry="10" transform="rotate(-25 38 23)"/>
+          <ellipse cx="62" cy="22" rx="5" ry="10" transform="rotate(25 62 22)"/>
+          <ellipse cx="84" cy="31" rx="5" ry="10" transform="rotate(35 84 31)"/>
+          <ellipse cx="281" cy="30" rx="5" ry="10" transform="rotate(35 281 30)"/>
+          <ellipse cx="262" cy="23" rx="5" ry="10" transform="rotate(25 262 23)"/>
+          <ellipse cx="238" cy="22" rx="5" ry="10" transform="rotate(-25 238 22)"/>
+          <ellipse cx="216" cy="31" rx="5" ry="10" transform="rotate(-35 216 31)"/>
+        </g>
+        <g fill="#f4d8a2" stroke="#c99a49" stroke-width="1">
+          <circle cx="150" cy="34" r="17"/>
+          <ellipse cx="150" cy="20" rx="8" ry="13"/>
+          <ellipse cx="137" cy="31" rx="8" ry="12" transform="rotate(-48 137 31)"/>
+          <ellipse cx="163" cy="31" rx="8" ry="12" transform="rotate(48 163 31)"/>
+          <ellipse cx="140" cy="42" rx="7" ry="10" transform="rotate(-65 140 42)"/>
+          <ellipse cx="160" cy="42" rx="7" ry="10" transform="rotate(65 160 42)"/>
+          <circle cx="150" cy="35" r="5" fill="#c99a49"/>
+        </g>
+        <g fill="#e8a0a0" stroke="#c97b72" stroke-width=".7">
+          <path d="M31 19 Q25 6 33 3 Q41 9 31 19Z"/>
+          <path d="M54 15 Q48 3 56 1 Q64 7 54 15Z"/>
+          <path d="M269 19 Q275 6 267 3 Q259 9 269 19Z"/>
+          <path d="M246 15 Q252 3 244 1 Q236 7 246 15Z"/>
+        </g>
+      </svg>
+    </div>
+    <canvas id="foil" aria-hidden="true"></canvas>
+  </div></div>
   <button class="linkbtn" id="revealBtn" type="button">Or tap here to reveal</button>
 </div></section>
 
@@ -633,8 +865,8 @@ body.locked #sd {
 <section class="bs"><div class="toran"></div><div class="bstage" id="bstage"><div class="pend" id="pend"><img class="bell" src="bell-s.webp" alt="" width="54" height="78"></div><div class="nm2"><div class="ln1"><span class="tt">SAKET</span><span class="tt">CHANCHAL</span><span class="tt">#SANGCHAL</span></div></div></div></section>
 <section class="end"><div class="toran"></div><div class="wrap rv">
   <p class="love">With Love,</p><h2>Agarwal and Gupta Family</h2>
-  <p class="hash">#SangChal</p><p class="navin-credit">Made with love by Navin</p>
-</div></section>
+  <p class="hash">#SangChal</p>
+</div><p class="navin-credit">Crafted with <span class="credit-heart" aria-label="love">♥</span> by Navin</p></section>
 </main>
 <audio id="song" src="song.mp3" loop preload="none"></audio>
 <button id="music" class="music" type="button" aria-label="Pause music" hidden><i></i><i></i><i></i></button>
